@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlphaBeta Academy | Premier Bengali Medium Science Coaching</title>
+    <meta name="description" content="Premium science coaching for WBBSE classes VIII-XII in Bengali medium with expert faculty and personalized learning">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#10B981',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans bg-gray-50 text-gray-800">
+    <!-- Navigation Component -->
+    <custom-navbar></custom-navbar>
+
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-r from-primary-600 to-primary-800 text-white py-20">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">বিজ্ঞান শিক্ষায় উৎকর্ষের নতুন দিগন্ত</h1>
+                <p class="text-xl mb-8">WBBSE এর অষ্টম থেকে দ্বাদশ শ্রেণির জন্য বাংলা মাধ্যমে বিজ্ঞানের সেরা কোচিং</p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#courses" class="bg-white text-primary-600 hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold text-center transition duration-300">কোর্স দেখুন</a>
+                    <a href="#contact" class="bg-secondary-500 hover:bg-secondary-600 px-8 py-3 rounded-lg font-semibold text-center transition duration-300">ফ্রি ডেমো ক্লাস</a>
+                </div>
+            </div>
+            <div class="md:w-1/2">
+                <img src="https://diy-assets.classplus.co/_next/image?url=https://cdn-diy-public.classplus.co/prod/BlackCreativeConsultantLogo_1761597302492.png&w=3840&q=75" 
+                     alt="AlphaBeta Academy Logo" 
+                     class="rounded-lg shadow-2xl w-full max-w-md mx-auto">
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="p-8 rounded-xl bg-gray-50 hover:shadow-lg transition duration-300">
+                    <div class="text-4xl font-bold text-primary-600 mb-2">250+</div>
+                    <div class="text-lg text-gray-600">সক্রিয় শিক্ষার্থী</div>
+                </div>
+                <div class="p-8 rounded-xl bg-gray-50 hover:shadow-lg transition duration-300">
+                    <div class="text-4xl font-bold text-primary-600 mb-2">98%</div>
+                    <div class="text-lg text-gray-600">সাফল্যের হার</div>
+                </div>
+                <div class="p-8 rounded-xl bg-gray-50 hover:shadow-lg transition duration-300">
+                    <div class="text-4xl font-bold text-primary-600 mb-2">10+</div>
+                    <div class="text-lg text-gray-600">বছরের অভিজ্ঞতা</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">আমাদের সম্পর্কে</h2>
+                <div class="w-20 h-1 bg-secondary-500 mx-auto"></div>
+            </div>
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2">
+                    <img src="https://static.photos/education/1024x576/42" alt="Students learning" class="rounded-lg shadow-xl w-full">
+                </div>
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-semibold mb-6">AlphaBeta Academy - বিজ্ঞান শিক্ষায় উৎকর্ষের কেন্দ্র</h3>
+                    <p class="text-lg mb-6">আমরা WBBSE-এর অষ্টম, নবম ও দশম শ্রেণির ছাত্রছাত্রীদের জন্য বাংলা মাধ্যমে ভৌতবিজ্ঞান বিষয়ের মানসম্মত শিক্ষা প্রদান করে থাকি। আমাদের অভিজ্ঞ শিক্ষকমণ্ডলীর তত্ত্বাবধানে নিয়মিত পাঠ, মূল্যায়ন ও ব্যক্তিগত সহায়তার মাধ্যমে ছাত্রছাত্রীদের বিজ্ঞান শিক্ষায় উৎকর্ষ অর্জনে সহায়তা করা হয়।</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <i data-feather="check-circle" class="text-secondary-500 mr-2"></i>
+                            <span>বাংলা মাধ্যমে সম্পূর্ণ পাঠদান</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i data-feather="check-circle" class="text-secondary-500 mr-2"></i>
+                            <span>সীমিত সংখ্যক শিক্ষার্থী প্রতি ব্যাচ</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i data-feather="check-circle" class="text-secondary-500 mr-2"></i>
+                            <span>ইন্টারেক্টিভ লাইভ ক্লাস</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i data-feather="check-circle" class="text-secondary-500 mr-2"></i>
+                            <span>নিয়মিত মূল্যায়ন ও প্রতিক্রিয়া</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="inline-block bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-lg font-medium transition duration-300">আমাদের সাথে যোগাযোগ করুন</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">আমাদের মিশন</h2>
+                <div class="w-20 h-1 bg-secondary-500 mx-auto"></div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="p-8 bg-gray-50 rounded-xl hover:shadow-lg transition duration-300">
+                    <div class="text-primary-600 mb-4">
+                        <i data-feather="target" class="w-12 h-12"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">আপনাকে গড়ে তোলা</h3>
+                    <p class="text-gray-600">আমাদের লক্ষ্য শিক্ষার্থীদেরকে সফল পেশাদার জীবনে রূপান্তরিত করা। আমরা তাদের প্রদান করি সঠিক দক্ষতা ও জ্ঞান, যাতে তারা নিজেদের সেরা সংস্করণে পরিণত হতে পারে।</p>
+                </div>
+                <div class="p-8 bg-gray-50 rounded-xl hover:shadow-lg transition duration-300">
+                    <div class="text-primary-600 mb-4">
+                        <i data-feather="globe" class="w-12 h-12"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">পরিবর্তন আনা</h3>
+                    <p class="text-gray-600">এই দ্রুতগামী বিশ্বের মাঝে, আমাদের লক্ষ্য শিক্ষার্থীদেরকে তাদের জ্ঞানের মাধ্যমে পরিবর্তনের পথে এগোতে সহায়তা করা। বিজ্ঞান শিক্ষার মাধ্যমে আমরা ভবিষ্যতের নেতৃত্ব গড়ে তুলছি।</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">আমরা যা অফার করি</h2>
+                <div class="w-20 h-1 bg-secondary-500 mx-auto"></div>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition duration-300">
+                    <div class="text-primary-600 mb-4">
+                        <i data-feather="video" class="w-10 h-10"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">লাইভ ক্লাস</h3>
+                    <p class="text-gray-600">ইন্টারেক্টিভ ও মজাদার লাইভ সেশনের মাধ্যমে মনোনিবেশপূর্ণ শিক্ষার অভিজ্ঞতা।</p>
+                </div>
+                <div class="p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition duration-300">
+                    <div class="text-primary-600 mb-4">
+                        <i data-feather="book-open" class="w-10 h-10"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">কারিকুলাম ভিত্তিক কোর্স</h3>
+                    <p class="text-gray-600">শেখো যেটা তোমার সব থেকে বেশি প্রয়োজন। আমরা সেই ভাবেই কোর্সগুলোকে সাজিয়েছি।</p>
+                </div>
+                <div class="p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition duration-300">
+                    <div class="text-primary-600 mb-4">
+                        <i data-feather="layers" class="w-10 h-10"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">সমন্বিত শিক্ষা</h3>
+                    <p class="text-gray-600">শেখো, অনুশীলন করো এবং আসন্ন বাস্তব বিশ্বের জন্য নিজেকে তৈরি করো।</p>
+                </div>
+                <div class="p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition duration-300">
+                    <div class="text-primary-600 mb-4">
+                        <i data-feather="users" class="w-10 h-10"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">ইন্টারেক্টিভ সেশন</h3>
+                    <p class="text-gray-600">দলবদ্ধভাবে শেখা, হাতে-কলমে কাজ করা, এবং নতুন চ্যালেঞ্জ মোকাবেলা করা—সব একসাথে!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">আমাদের কোর্সসমূহ</h2>
+                <div class="w-20 h-1 bg-secondary-500 mx-auto"></div>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Course 1 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300 border border-gray-100">
+                    <div class="h-48 bg-primary-100 flex items-center justify-center">
+                        <i data-feather="atom" class="w-16 h-16 text-primary-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">অষ্টম শ্রেণি - ভৌতবিজ্ঞান</h3>
+                        <p class="text-gray-600 mb-4">WBBSE সিলেবাস অনুযায়ী সম্পূর্ণ বাংলা মাধ্যমে পাঠদান</p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-center">
+                                <i data-feather="check" class="w-4 h-4 text-secondary-500 mr-2"></i>
+                                <span>সাপ্তাহিক 3টি লাইভ ক্লাস</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i data-feather="check" class="w-4 h-4 text-secondary-500 mr-2"></i>
+                                <span>ব্যক্তিগত ডাউট ক্লিয়ারিং সেশন</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i data-feather="check" class="w-4 h-4 text-secondary-500 mr-2"></i>
+                                <span>মাসিক মূল্যায়ন পরীক্ষা</span>
+                            </li>
+                        </ul>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold text-primary-600">₹1,500/মাস</span>
+                            <a href="#contact" class="text-secondary-500 hover:text-secondary-600 font-medium">এনরোল করুন</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course 2 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300 border border-gray-100">
+                    <div class="h-48 bg-primary-100 flex items-center justify-center">
+                        <i data-feather="flask" class="w-16 h-16 text-primary-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">নবম শ্রেণি - ভৌতবিজ্ঞান</h3>
+                        <p class="text-gray-600 mb-4">ধারণা ভিত্তিক শিখন ও বোর্ড পরীক্ষার প্রস্তুতি</p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-center">
+                                <i data-feather="check" class="w-4 h-4 text-secondary-500 mr-2"></i>
+                                <span>সাপ্তাহিক 4টি লাইভ ক্লাস</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i data-feather="check" class="w-4 h-4 text-secondary-500 mr-2"></i>
+                                <span>বিশেষ মডেল প্রশ্ন ব্যাংক</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i data-feather="check" class="w-4 h-4 text-secondary-500 mr-2"></i>
+                                <span>অধ্যায় ভিত্তিক মক টেস্ট</span>
+                            </li>
+                        </ul>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold text-primary-600">₹2,000/মাস</span>
+                            <a href="#contact" class="text-secondary-500 hover:text-secondary-600 font-medium">এনরোল করুন</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course 3 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300 border border-gray-100">
+                    <div class="h-48 bg-primary-100 flex items-center justify-center">
+                        <i data-feather="activity" class="w-16 h-16 text-primary-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">দশম শ্রেণি - ভৌতবিজ্ঞান</h3>
+                        <p class="text-gray-600 mb-4">বোর্ড পরীক্ষার জন্য সম্পূর্ণ প্রস্তুতি</p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-center">
+                                <i data-feather="check" class="w-4 h-4 text-secondary-500 mr-2"></i>
+                                <span>সাপ্তাহিক 5টি লাইভ ক্লাস</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i data-feather="check" class="w-4 h-4 text-secondary-500 mr-2"></i>
+                                <span>বিশেষ মডেল প্রশ্ন ব্যাংক</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i data-feather="check" class="w-4 h-4 text-secondary-500 mr-2"></i>
+                                <span>মাসিক মূল্যায়ন ও মক টেস্ট</span>
+                            </li>
+                        </ul>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold text-primary-600">₹2,500/মাস</span>
+                            <a href="#contact" class="text-secondary-500 hover:text-secondary-600 font-medium">এনরোল করুন</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">আমাদের টিম</h2>
+                <div class="w-20 h-1 bg-secondary-500 mx-auto"></div>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Team Member 1 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+                    <div class="h-64 bg-gray-100 flex items-center justify-center">
+                        <img src="https://diy-assets.classplus.co/_next/image?url=https://cdn-diy-public.classplus.co/prod/BlackCreativeConsultantLogo_1761597319674.png&w=3840&q=75" 
+                             alt="Director" 
+                             class="h-full w-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-1">সুভদেব মিত্র</h3>
+                        <p class="text-gray-600 mb-4">পরিচালক</p>
+                        <p class="text-gray-600">15+ বছরের অভিজ্ঞতা সহ বিজ্ঞান শিক্ষক। WBBSE ও WBCHSE সিলেবাসে বিশেষজ্ঞ।</p>
+                    </div>
+                </div>
+
+                <!-- Team Member 2 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+                    <div class="h-64 bg-gray-100 flex items-center justify-center">
+                        <img src="https://diy-assets.classplus.co/_next/image?url=https://cdn-diy-public.classplus.co/prod/XtremeSportChannelLogo2_1761122478738.png&w=3840&q=75" 
+                             alt="Manager" 
+                             class="h-full w-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-1">অরিজিৎ ভট্টাচার্য</h3>
+                        <p class="text-gray-600 mb-4">ম্যানেজার</p>
+                        <p class="text-gray-600">শিক্ষা প্রশাসনে 10 বছরের অভিজ্ঞতা সহ শিক্ষা ব্যবস্থাপনা বিশেষজ্ঞ।</p>
+                    </div>
+                </div>
+
+                <!-- Team Member 3 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+                    <div class="h-64 bg-gray-100 flex items-center justify-center">
+                        <img src="https://diy-assets.classplus.co/_next/image?url=https://cdn-diy-public.classplus.co/prod/WhatsAppImage20251022at17_1761136024939.jpg&w=3840&q=75" 
+                             alt="Science Mentor" 
+                             class="h-full w-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-1">ড. প্রতীক সাহা</h3>
+                        <p class="text-gray-600 mb-4">বিজ্ঞান পরামর্শদাতা</p>
+                        <p class="text-gray-600">পিএইচডি ধারী পদার্থবিদ্যা বিশেষজ্ঞ ও অভিজ্ঞ শিক্ষক।</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">কেন আমাদের বেছে নেবেন?</h2>
+                <div class="w-20 h-1 bg-secondary-500 mx-auto"></div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="flex items-start">
+                    <div class="bg-primary-100 p-3 rounded-lg mr-6">
+                        <i data-feather="users" class="w-6 h-6 text-primary-600"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-3">প্রতি ব্যাচে সীমিত আসন সংখ্যা</h3>
+                        <p class="text-gray-600">ছোট ব্যাচ, বেশি মনোযোগ — মানসম্মত শিক্ষার নিশ্চয়তা। সীমিত আসনে ব্যক্তিগত যত্ন ও নিখুঁত গাইডেন্স। প্রতিটি শিক্ষার্থীকে আমরা ব্যক্তিগতভাবে জানার চেষ্টা করি এবং তাদের প্রয়োজনে সাড়া দিই।</p>
+                    </div>
+                </div>
+                <div class="flex items-start">
+                    <div class="bg-primary-100 p-3 rounded-lg mr-6">
+                        <i data-feather="book" class="w-6 h-6 text-primary-600"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-3">মাতৃভাষায় বিজ্ঞানচর্চা</h3>
+                        <p class="text-gray-600">নিজের ভাষায় বিজ্ঞান—সহজে শেখা, গভীর বোঝা। নিজের ভাষায়, নিজের নাগালে। বাংলা মাধ্যমে বিজ্ঞান শিক্ষা শিক্ষার্থীদের জন্য জটিল ধারণাগুলো সহজে বুঝতে সাহায্য করে এবং আত্মবিশ্বাস গড়ে তোলে।</p>
+                    </div>
+                </div>
+                <div class="flex items-start">
+                    <div class="bg-primary-100 p-3 rounded-lg mr-6">
+                        <i data-feather="award" class="w-6 h-6 text-primary-600"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-3">অভিজ্ঞ শিক্ষকমণ্ডলী</h3>
+                        <p class="text-gray-600">আমাদের শিক্ষকবৃন্দ WBBSE সিলেবাসে বিশেষজ্ঞ এবং বছরের পর বছর ধরে শিক্ষাদানের অভিজ্ঞতা সম্পন্ন। তারা প্রতিটি বিষয়কে এমনভাবে উপস্থাপন করেন যা শিক্ষার্থীদের জন্য সহজবোধ্য এবং আকর্ষণীয় হয়।</p>
+                    </div>
+                </div>
+                <div class="flex items-start">
+                    <div class="bg-primary-100 p-3 rounded-lg mr-6">
+                        <i data-feather="bar-chart-2" class="w-6 h-6 text-primary-600"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-3">ফলাফল-ভিত্তিক পদ্ধতি</h3>
+                        <p class="text-gray-600">আমাদের শিক্ষা পদ্ধতি সম্পূর্ণভাবে ফলাফল-ভিত্তিক। নিয়মিত মূল্যায়ন, মক টেস্ট এবং ব্যক্তিগত প্রতিক্রিয়া শিক্ষার্থীদের দুর্বলতা চিহ্নিত করতে এবং সেগুলো কাটিয়ে উঠতে সাহায্য করে।</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">শিক্ষার্থী ও অভিভাবকদের মতামত</h2>
+                <div class="w-20 h-1 bg-secondary-500 mx-auto"></div>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-gray-200 overflow-hidden mr-4">
+                            <img src="https://static.photos/people/200x200/1" alt="Student" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">রাহুল সরকার</h4>
+                            <p class="text-sm text-gray-500">দশম শ্রেণি, 2023 ব্যাচ</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"AlphaBeta Academy-এর ক্লাসগুলো আমাকে বিজ্ঞান বিষয়ে সম্পূর্ণ আত্মবিশ্বাসী করে তুলেছে। শিক্ষকরা প্রতিটি বিষয়কে এত সহজভাবে ব্যাখ্যা করেন যে জটিল ধারণাগুলোও বুঝতে সমস্যা হয় না।"</p>
+                    <div class="flex mt-4 text-yellow-400">
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-gray-200 overflow-hidden mr-4">
+                            <img src="https://static.photos/people/200x200/2" alt="Parent" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">সুমিতা ব্যানার্জী</h4>
+                            <p class="text-sm text-gray-500">অভিভাবক</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"আমার ছেলে নবম শ্রেণিতে AlphaBeta Academy-এ ভর্তি হয়েছে। আমি লক্ষ্য করেছি তার বিজ্ঞান বিষয়ে আগ্রহ এবং বোঝার ক্ষমতা উল্লেখযোগ্যভাবে বেড়েছে। শিক্ষকদের আন্তরিকতা এবং যত্ন সত্যিই প্রশংসনীয়।"</p>
+                    <div class="flex mt-4 text-yellow-400">
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-gray-200 overflow-hidden mr-4">
+                            <img src="https://static.photos/people/200x200/3" alt="Student" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">প্রিয়াঙ্কা দাস</h4>
+                            <p class="text-sm text-gray-500">অষ্টম শ্রেণি, 2024 ব্যাচ</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"আমি আগে বিজ্ঞান ভয় পেতাম, কিন্তু AlphaBeta Academy-এর ক্লাসগুলো আমার এই ভয় দূর করেছে। এখন বিজ্ঞান আমার প্রিয় বিষয়! শিক্ষকরা প্রতিটি প্রশ্নের উত্তর এত ধৈর্য্য সহকারে দেন।"</p>
+                    <div class="flex mt-4 text-yellow-400">
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quotes Section -->
+    <section class="py-20 bg-primary-600 text-white">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Quote 1 -->
+                <div class="text-center">
+                    <div class="mb-6">
+                        <img src="https://diy-assets.classplus.co/_next/image?url=https://cdn-diy-public.classplus.co/prod/swamivivekananda_1761405741510.webp&w=3840&q=75" 
+                             alt="Swami Vivekananda" 
+                             class="w-24 h-24 rounded-full object-cover mx-auto border-4 border-white">
+                    </div>
+                    <blockquote class="text-lg italic mb-4">"জ্ঞান অর্জন কর, মনকে শক্তিশালী কর।"</blockquote>
+                    <p class="font-semibold">স্বামী বিবেকানন্দ</p>
+                </div>
+
+                <!-- Quote 2 -->
+                <div class="text-center">
+                    <div class="mb-6">
+                        <img src="https://diy-assets.classplus.co/_next/image?url=https://cdn-diy-public.classplus.co/prod/JagadishChandraBose_1761405658234.webp&w=3840&q=75" 
+                             alt="Jagadish Chandra Bose" 
+                             class="w-24 h-24 rounded-full object-cover mx-auto border-4 border-white">
+                    </div>
+                    <blockquote class="text-lg italic mb-4">"অজানা অন্বেষা করলেই ভবিষ্যৎ আপনার হবে।"</blockquote>
+                    <p class="font-semibold">জগদীশ চন্দ্র বসু</p>
+                </div>
+
+                <!-- Quote 3 -->
+                <div class="text-center">
+                    <div class="mb-6">
+                        <img src="https://diy-assets.classplus.co/_next/image?url=https://cdn-diy-public.classplus.co/prod/prafullachandraroy_1761405669388.webp&w=3840&q=75" 
+                             alt="Prafulla Chandra Roy" 
+                             class="w-24 h-24 rounded-full object-cover mx-auto border-4 border-white">
+                    </div>
+                    <blockquote class="text-lg italic mb-4">"জ্ঞানই সবচেয়ে বড় ধন।"</blockquote>
+                    <p class="font-semibold">প্রফুল্ল চন্দ্র রায়</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">সচরাচর জিজ্ঞাসিত প্রশ্ন</h2>
+                <div class="w-20 h-1 bg-secondary-500 mx-auto"></div>
+            </div>
+            <div class="max-w-3xl mx-auto">
+                <!-- FAQ Item 1 -->
+                <div class="mb-6 border-b border-gray-200 pb-6">
+                    <button class="faq-question flex justify-between items-center w-full text-left font-semibold text-lg">
+                        <span>আপনারা কোন কোন শ্রেণির জন্য কোচিং প্রদান করেন?</span>
+                        <i data-feather="chevron-down" class="w-5 h-5 text-primary-600 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer mt-4 text-gray-600 hidden">
+                        আমরা ক্লাস VIII, IX ও X (WBBSE) শ্রেণির ছাত্রছাত্রীদের জন্য কোচিং প্রদান করি, বিশেষত ফিজিক্যাল সায়েন্স ও অন্যান্য গুরুত্বপূর্ণ বিষয়ে। এছাড়া XI-XII শ্রেণির ছাত্রছাত্রীদের জন্যও বিশেষ ক্লাস রয়েছে।
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="mb-6 border-b border-gray-200 pb-6">
+                    <button class="faq-question flex justify-between items-center w-full text-left font-semibold text-lg">
+                        <span>ক্লাসগুলো কোন মাধ্যমে পরিচালিত হয়?</span>
+                        <i data-feather="chevron-down" class="w-5 h-5 text-primary-600 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer mt-4 text-gray-600 hidden">
+                        সব ক্লাসই বাংলা মাধ্যমে পরিচালিত হয়, যাতে ছাত্রছাত্রীরা সহজে বুঝতে পারে। আমরা বিশ্বাস করি মাতৃভাষায় শিক্ষা গ্রহণ করলে জটিল ধারণাগুলো সহজে বোঝা যায়।
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="mb-6 border-b border-gray-200 pb-6">
+                    <button class="faq-question flex justify-between items-center w-full text-left font-semibold text-lg">
+                        <span>প্রতি ব্যাচে কতজন শিক্ষার্থী থাকে?</span>
+                        <i data-feather="chevron-down" class="w-5 h-5 text-primary-600 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer mt-4 text-gray-600 hidden">
+                        প্রতি ব্যাচে সীমিত সংখ্যক ছাত্রছাত্রী (সাধারণত 15-20 জন) রাখা হয়, যাতে প্রত্যেকের প্রতি সমান মনোযোগ দেওয়া যায়। এটি আমাদের শিক্ষার মান নিশ্চিত করার একটি গুরুত্বপূর্ণ অংশ।
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="mb-6 border-b border-gray-200 pb-6">
+                    <button class="faq-question flex justify-between items-center w-full text-left font-semibold text-lg">
+                        <span>শিক্ষকদের যোগ্যতা কী?</span>
+                        <i data-feather="chevron-down" class="w-5 h-5 text-primary-600 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer mt-4 text-gray-600 hidden">
+                        আমাদের শিক্ষকবৃন্দ অভিজ্ঞ ও যোগ্য — তাঁদের বিষয় জ্ঞান ও শিক্ষাদানের অভিজ্ঞতা সমৃদ্ধ। সকল শিক্ষকই সংশ্লিষ্ট বিষয়ে স্নাতকোত্তর ডিগ্রিধারী এবং বহু বছর ধরে শিক্ষাদানের অভিজ্ঞতা সম্পন্ন।
+                    </div>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="mb-6 border-b border-gray-200 pb-6">
+                    <button class="faq-question flex justify-between items-center w-full text-left font-semibold text-lg">
+                        <span>ক্লাসের সময়সূচি কেমন?</span>
+                        <i data-feather="chevron-down" class="w-5 h-5 text-primary-600 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer mt-4 text-gray-600 hidden">
+                        আমাদের রেগুলার ও স্পেশাল ব্যাচ আছে। সময়সূচি স্কুলের রুটিন অনুযায়ী নির্ধারিত হয়। সাধারণত সকাল ৭টা থেকে ৯টা এবং বিকাল ৪টা থেকে ৮টার মধ্যে ক্লাসগুলো হয়। সপ্তাহান্তে বিশেষ ক্লাসও রয়েছে।
+                    </div>
+                </div>
+
+                <!-- FAQ Item 6 -->
+                <div class="mb-6 border-b border-gray-200 pb-6">
+                    <button class="faq-question flex justify-between items-center w-full text-left font-semibold text-lg">
+                        <span>ক্লাসের জন্য স্টাডি মেটেরিয়াল দেওয়া হয় কি?</span>
+                        <i data-feather="chevron-down" class="w-5 h-5 text-primary-600 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer mt-4 text-gray-600 hidden">
+                        হ্যাঁ, ছাত্রছাত্রীদের জন্য নোটস, ওয়ার্কশিট ও মক টেস্ট পেপার দেওয়া হয়। আমাদের বিশেষভাবে তৈরি স্টাডি মেটেরিয়াল WBBSE সিলেবাসের সাথে সম্পূর্ণ সঙ্গতিপূর্ণ এবং পরীক্ষার জন্য বিশেষভাবে উপযোগী।
+                    </div>
+                </div>
+
+                <!-- FAQ Item 7 -->
+                <div class="mb-6 border-b border-gray-200 pb-6">
+                    <button class="faq-question flex justify-between items-center w-full text-left font-semibold text-lg">
+                        <span>পরীক্ষা নেওয়া হয় কি?</span>
+                        <i data-feather="chevron-down" class="w-5 h-5 text-primary-600 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer mt-4 text-gray-600 hidden">
+                        হ্যাঁ, আমরা সাপ্তাহিক ও মাসিক পরীক্ষা নিই যাতে ছাত্রছাত্রীদের অগ্রগতি বোঝা যায়। এছাড়া প্রতি অধ্যায় শেষে ইউনিট টেস্ট এবং বোর্ড পরীক্ষার আগে মডেল টেস্ট নেওয়া হয়।
+                    </div>
+                </div>
+
+                <!-- FAQ Item 8 -->
+                <div class="mb-6 border-b border-gray-200 pb-6">
+                    <button class="faq-question flex justify-between items-center w-full text-left font-semibold text-lg">
+                        <span>কিভাবে ভর্তি হতে পারি?</span>
+                        <i data-feather="chevron-down" class="w-5 h-5 text-primary-600 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer mt-4 text-gray-600 hidden">
+                        আপনি সরাসরি আমাদের সেন্টারে এসে বা ফোন/হোয়াটসঅ্যাপে যোগাযোগ করে ভর্তি হতে পারেন। আমাদের ওয়েবসাইট থেকেও অনলাইন রেজিস্ট্রেশন করা যায়। ভর্তির জন্য প্রয়োজনীয় কাগজপত্রের মধ্যে রয়েছে স্কুলের আইডি কার্ড এবং ২ কপি পাসপোর্ট সাইজের ছবি।
+                    </div>
+                </div>
+
+                <!-- FAQ Item 9 -->
+                <div class="mb-6 border-b border-gray-200 pb-6">
+                    <button class="faq-question flex justify-between items-center w-full text-left font-semibold text-lg">
+                        <span>ডেমো ক্লাসের সুবিধা আছে কি?</span>
+                        <i data-feather="chevron-down" class="w-5 h-5 text-primary-600 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer mt-4 text-gray-600 hidden">
+                        হ্যাঁ, আমরা ফ্রি ডেমো ক্লাস দিয়ে থাকি যাতে ছাত্রছাত্রীরা আমাদের পড়ানোর ধরন বুঝতে পারে। ডেমো ক্লাসে অংশগ্রহণ করতে আমাদের সাথে যোগাযোগ করুন বা ওয়েবসাইট থেকে স্লট বুক করুন।
+                    </div>
+                </div>
+
+                <!-- FAQ Item 10 -->
+                <div class="mb-6">
+                    <button class="faq-question flex justify-between items-center w-full text-left font-semibold text-lg">
+                        <span>অন্যান্য কোচিং থেকে আপনাদের বিশেষত্ব কী?</span>
+                        <i data-feather="chevron-down" class="w-5 h-5 text-primary-600 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer mt-4 text-gray-600 hidden">
+                        আমরা কনসেপ্ট ক্লিয়ারিটি, ব্যক্তিগত যত্ন ও রেজাল্ট-ভিত্তিক পড়াশোনার ওপর গুরুত্ব দিই — যাতে প্রতিটি ছাত্রছাত্রী সফলতা অর্জন করতে পারে। আমাদের বিশেষত্বের মধ্যে রয়েছে:
+                        <ul class="list-disc pl-5 mt-2 space-y-1">
+                            <li>ছোট ব্যাচ সাইজ</li>
+                            <li>বাংলা মাধ্যমে ধারণা ভিত্তিক শিক্ষা</li>
+                            <li>নিয়মিত মূল্যায়ন ও প্রতিক্রিয়া</li>
+                            <li>পরীক্ষা কৌশল প্রশিক্ষণ</li>
+                            <li>ব্যক্তিগত ডাউট ক্লিয়ারিং সেশন</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">যোগাযোগ করুন</h2>
+                <div class="w-20 h-1 bg-secondary-500 mx-auto"></div>
+            </div>
+            <div class="flex flex-col md:flex-row gap-12">
+                <div class="md:w-1/2">
+                    <h3 class="text-xl font-semibold mb-6">আমাদের সাথে যোগাযোগের তথ্য</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-primary-100 p-3 rounded-lg mr-6">
+                                <i data-feather="map-pin" class="w-6 h-6 text-primary-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-1">ঠিকানা</h4>
+                                <p class="text-gray-600">১২৩ বিজ্ঞান সরণি, কলকাতা - ৭০০০০১, পশ্চিমবঙ্গ</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-primary-100 p-3 rounded-lg mr-6">
+                                <i data-feather="phone" class="w-6 h-6 text-primary-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-1">ফোন</h4>
+                                <p class="text-gray-600">+৯১ ৯৮৭৬৫ ৪৩২১০</p>
+                                <p class="text-gray-600">+৯১ ৯০১২৩ ৪৫৬৭৮ (হোয়াটসঅ্যাপ)</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-primary-100 p-3 rounded-lg mr-6">
+                                <i data-feather="mail" class="w-6 h-6 text-primary-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-1">ইমেইল</h4>
+                                <p class="text-gray-600">info@alphabetaacademy.com</p>
+                                <p class="text-gray-600">admission@alphabetaacademy.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-primary-100 p-3 rounded-lg mr-6">
+                                <i data-feather="clock" class="w-6 h-6 text-primary-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-1">কর্মঘণ্টা</h4>
+                                <p class="text-gray-600">সোমবার - শনিবার: সকাল ৮টা - সন্ধ্যা ৭টা</p>
+                                <p class="text-gray-600">রবিবার: বন্ধ</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8">
+                        <h4 class="font-semibold mb-4">সামাজিক মাধ্যম</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="bg-gray-200 hover:bg-gray-300 p-3 rounded-full transition duration-300">
+                                <i data-feather="facebook" class="w-5 h-5 text-gray-700"></i>
+                            </a>
+                            <a href="#" class="bg-gray-200 hover:bg-gray-300 p-3 rounded-full transition duration-300">
+                                <i data-feather="instagram" class="w-5 h-5 text-gray-700"></i>
+                            </a>
+                            <a href="#" class="bg-gray-200 hover:bg-gray-300 p-3 rounded-full transition duration-300">
+                                <i data-feather="youtube" class="w-5 h-5 text-gray-700"></i>
+                            </a>
+                            <a href="#" class="bg-gray-200 hover:bg-gray-300 p-3 rounded-full transition duration-300">
+                                <i data-feather="linkedin" class="w-5 h-5 text-gray-700"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <div class="bg-white p-8 rounded-xl shadow-md">
+                        <h3 class="text-xl font-semibold mb-6">আমাদের বার্তা পাঠান</h3>
+                        <form>
+                            <div class="mb-6">
+                                <label for="name" class="block text-gray-700 mb-2">আপনার নাম</label>
+                                <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent">
+                            </div>
+                            <div class="mb-6">
+                                <label for="email" class="block text-gray-700 mb-2">ইমেইল</label>
+                                <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent">
+                            </div>
+                            <div class="mb-6">
+                                <label for="phone" class="block text-gray-700 mb-2">ফোন নম্বর</label>
+                                <input type="tel" id="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent">
+                            </div>
+                            <div class="mb-6">
+                                <label for="subject" class="block text-gray-700 mb-2">বিষয়</label>
+                                <select id="subject" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent">
+                                    <option value="">বিষয় নির্বাচন করুন</option>
+                                    <option value="admission">ভর্তি সংক্রান্ত</option>
+                                    <option value="course">কোর্স সম্পর্কিত তথ্য</option>
+                                    <option value="demo">ডেমো ক্লাস</option>
+                                    <option value="other">অন্যান্য</option>
+                                </select>
+                            </div>
+                            <div class="mb-6">
+                                <label for="message" class="block text-gray-700 mb-2">বার্তা</label>
+                                <textarea id="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-primary-600 hover:bg-primary-700 text-white py-3 px-6 rounded-lg font-medium transition duration-300">বার্তা পাঠান</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <div class="h-96 w-full">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3684.0163968886164!2d88.3632144153503!3d22.5759855851808!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a02771346ae015d%3A0xb540e4bce39763!2sVictoria%20Memorial!5e0!3m2!1sen!2sin!4v1629981721457!5m2!1sen!2sin" 
+                width="100%" 
+                height="100%" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy"
+                class="filter grayscale(50%) contrast(120%)"></iframe>
+    </div>
+
+    <!-- Footer Component -->
+    <custom-footer></custom-footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-primary-600 text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300">
+        <i data-feather="arrow-up" class="w-5 h-5"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="components/navbar.js"></script>
+    <script src="components/footer.js"></script>
+    <script src="script.js"></script>
+    <script>
+        feather.replace();
+    </script>
+<script src="https://huggingface.co/deepsite/deepsite-badge.js"></script>
+</body>
+</html>
