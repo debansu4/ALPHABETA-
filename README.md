@@ -2,12 +2,11 @@
 title: AlphaBeta EduSphere 🚀
 colorFrom: purple
 colorTo: pink
-emoji: 🐳
 sdk: static
 pinned: false
 tags:
-  - deepsite-v3
+  - Debansu
 ---
 
-# Welcome to your new DeepSite project!
-This project was created with [DeepSite](https://huggingface.co/deepsite).
+
+This project was created by Debansu Das.
