@@ -1,163 +1,1146 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full bg-[#0a0f1d]">
 <head>
-<meta charset="UTF-8">
-<title>Home</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alphabeta Academy - Enterprise AI EdTech Ecosystem</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<style>
-body {
-    margin: 0;
-    font-family: Arial;
-    background: #f4f6f9;
-}
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0a0f1d',
+                            glass: 'rgba(13, 22, 43, 0.7)',
+                            border: 'rgba(56, 189, 248, 0.2)',
+                            cyan: '#06b6d4',
+                            purple: '#a855f7',
+                            gold: '#fbbf24'
+                        }
+                    },
+                    boxShadow: {
+                        'neon-cyan': '0 0 15px rgba(6, 182, 212, 0.4)',
+                        'neon-purple': '0 0 15px rgba(168, 85, 247, 0.4)',
+                    }
+                }
+            }
+        }
+    </script>
 
-/* Navbar */
-.navbar {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    background: #1e293b;
-    padding: 15px;
-    color: white;
-}
-
-.nav-item {
-    cursor: pointer;
-    font-weight: bold;
-    position: relative;
-}
-
-/* Navbar Hover Effect */
-.nav-item::after {
-    content: "";
-    position: absolute;
-    width: 0%;
-    height: 3px;
-    background: #38bdf8;
-    left: 0;
-    bottom: -5px;
-    transition: 0.3s;
-}
-
-.nav-item:hover::after {
-    width: 100%;
-}
-
-/* Content */
-.content {
-    padding: 30px;
-}
-
-/* Sections */
-.section {
-    display: none;
-}
-
-.active {
-    display: block;
-}
-
-/* Button Container */
-.button-container {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
-    margin-bottom: 30px;
-}
-
-/* Buttons */
-button {
-    padding: 15px 25px;
-    font-size: 18px;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    background: linear-gradient(135deg, #4facfe, #00f2fe);
-    color: white;
-    font-weight: bold;
-    transition: 0.3s ease;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-}
-
-button:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-}
-
-button:active {
-    transform: scale(0.95);
-}
-
-/* Center Text */
-h1, p {
-    text-align: center;
-}
-
-/* Images */
-img {
-    display: block;
-    margin: 15px auto;
-    width: 120px;
-}
-</style>
-
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: radial-gradient(circle at 50% 0%, #141e33 0%, #0a0f1d 70%);
+            overflow-x: hidden;
+        }
+        /* Custom Glassmorphism Utility */
+        .glass-panel {
+            background: rgba(13, 22, 43, 0.65);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(56, 189, 248, 0.15);
+        }
+        .glass-panel-purple {
+            background: rgba(20, 13, 43, 0.65);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(168, 85, 247, 0.15);
+        }
+        /* Glowing Orbs background */
+        .orb-cyan {
+            filter: blur(120px);
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.15) 0%, transparent 70%);
+        }
+        .orb-purple {
+            filter: blur(120px);
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, transparent 70%);
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0f1d;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(56, 189, 248, 0.3);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(6, 182, 212, 0.6);
+        }
+    </style>
 </head>
+<body class="h-full text-gray-200 antialiased flex flex-col justify-between">
 
-<body>
+    <!-- Ambient Background Elements -->
+    <div class="absolute top-10 left-10 w-96 h-96 orb-cyan pointer-events-none z-0"></div>
+    <div class="absolute bottom-10 right-10 w-96 h-96 orb-purple pointer-events-none z-0"></div>
 
-<div class="navbar">
-  <div class="nav-item" onclick="showSection('batches')">Batches</div>
-  <div class="nav-item" onclick="showSection('study')">Study</div>
-  <div class="nav-item" onclick="showSection('profile')">Profile</div>
-  <div class="nav-item" onclick="showSection('chat')">Chat</div>
-</div>
+    <!-- MAIN WEB INTERFACE CONTAINER -->
+    <div class="w-full min-h-screen flex z-10 relative">
+        
+        <!-- SIDEBAR CONTROLLER -->
+        <aside class="w-72 glass-panel border-r border-brand-border flex flex-col justify-between p-6 shrink-0 z-20">
+            <div>
+                <!-- Brand Identity Header -->
+                <div class="flex items-center gap-3 mb-10 px-2">
+                    <div class="w-10 h-10 bg-gradient-to-tr from-cyan-500 to-purple-600 rounded-xl flex items-center justify-center shadow-neon-cyan animate-pulse">
+                        <i class="fa-solid fa-atom text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold tracking-wider bg-gradient-to-r from-white via-cyan-400 to-purple-400 bg-clip-text text-transparent">ALPHABETA</h1>
+                        <p class="text-[10px] text-cyan-400 font-semibold tracking-widest uppercase">Academy Core</p>
+                    </div>
+                </div>
 
-<div class="content">
-  
-  <div id="batches" class="section active">
+                <!-- Navigation List -->
+                <nav class="space-y-2">
+                    <button onclick="switchTab('dashboard')" id="btn-dashboard" class="nav-btn w-full flex items-center gap-4 px-4 py-3.5 rounded-xl transition-all duration-300 group font-medium text-cyan-400 bg-cyan-500/10 border border-cyan-500/30 shadow-neon-cyan">
+                        <i class="fa-solid fa-chart-pie text-lg transition-transform group-hover:scale-110"></i>
+                        <span>Dashboard</span>
+                    </button>
+                    <button onclick="switchTab('courses')" id="btn-courses" class="nav-btn w-full flex items-center gap-4 px-4 py-3.5 rounded-xl transition-all duration-300 group font-medium text-gray-400 hover:text-white hover:bg-white/5 border border-transparent">
+                        <i class="fa-solid fa-graduation-cap text-lg transition-transform group-hover:scale-110"></i>
+                        <span>Explore Courses</span>
+                    </button>
+                    <button onclick="switchTab('live')" id="btn-live" class="nav-btn w-full flex items-center gap-4 px-4 py-3.5 rounded-xl transition-all duration-300 group font-medium text-gray-400 hover:text-white hover:bg-white/5 border border-transparent">
+                        <div class="relative">
+                            <i class="fa-solid fa-satellite-dish text-lg transition-transform group-hover:scale-110"></i>
+                            <span class="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full animate-ping"></span>
+                        </div>
+                        <span>Live Classroom</span>
+                    </button>
+                    <button onclick="switchTab('tests')" id="btn-tests" class="nav-btn w-full flex items-center gap-4 px-4 py-3.5 rounded-xl transition-all duration-300 group font-medium text-gray-400 hover:text-white hover:bg-white/5 border border-transparent">
+                        <i class="fa-solid fa-square-poll-vertical text-lg transition-transform group-hover:scale-110"></i>
+                        <span>Test Center</span>
+                    </button>
+                    <button onclick="switchTab('ai')" id="btn-ai" class="nav-btn w-full flex items-center gap-4 px-4 py-3.5 rounded-xl transition-all duration-300 group font-medium text-purple-400/80 hover:text-purple-300 hover:bg-purple-500/5 border border-transparent">
+                        <i class="fa-solid fa-wand-magic-sparkles text-lg animate-bounce"></i>
+                        <span class="font-bold tracking-wide">AI Core Hub</span>
+                    </button>
+                </nav>
+            </div>
 
-    <div class="button-container">
-        <button>Class 09</button>
-        <button>Class 10</button>
-        <button>Class 11</button>
-        <button>Class 12</button>
+            <!-- Footer Meta Actions -->
+            <div class="mt-auto pt-6 border-t border-white/5">
+                <div class="glass-panel p-3.5 rounded-xl border border-white/5 flex items-center gap-3">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" alt="Avatar" class="w-10 h-10 rounded-lg object-cover ring-2 ring-cyan-500/50">
+                        <span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-500 rounded-full border-2 border-[#0a0f1d]"></span>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p class="text-sm font-semibold truncate text-white">Debayan Ghosh</p>
+                        <p class="text-xs text-gray-400 truncate flex items-center gap-1.5">
+                            <span class="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-pulse"></span>Sync Complete
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- MAIN MAIN CONTENT PANEL CONTAINER -->
+        <main class="flex-1 p-8 overflow-y-auto max-w-[1600px] mx-auto w-full relative z-10">
+            
+            <!-- Global Dashboard Top Bar -->
+            <header class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 pb-4 border-b border-white/5">
+                <div>
+                    <h2 id="view-title" class="text-2xl font-bold text-white tracking-tight">System Workspace</h2>
+                    <p id="view-subtitle" class="text-sm text-gray-400">Welcome to your high-performance enterprise ecosystem.</p>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="relative max-w-xs">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+                        <input type="text" placeholder="Global structural search..." class="w-64 pl-9 pr-4 py-2 text-sm bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-cyan-500/50 transition-colors placeholder:text-gray-500 text-white">
+                    </div>
+                    <button class="relative w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-300 hover:text-white transition-colors">
+                        <i class="fa-solid fa-bell"></i>
+                        <span class="absolute top-2.5 right-2.5 w-2 h-2 bg-purple-500 rounded-full"></span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- ================= VIEW 1: DASHBOARD ================= -->
+            <div id="view-dashboard" class="space-y-8 view-panel">
+                <!-- Top Overview Metrics Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-5">
+                    <div class="glass-panel p-5 rounded-2xl relative overflow-hidden group hover:border-cyan-500/30 transition-all duration-300">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-semibold uppercase tracking-wider text-gray-400">Daily Streak Tracker</span>
+                            <div class="w-8 h-8 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400">
+                                <i class="fa-solid fa-fire animate-pulse"></i>
+                            </div>
+                        </div>
+                        <div class="flex items-baseline gap-2">
+                            <span class="text-3xl font-bold text-white">18 Days</span>
+                            <span class="text-xs text-emerald-400 font-medium"><i class="fa-solid fa-caret-up mr-0.5"></i>+2 today</span>
+                        </div>
+                        <div class="w-full bg-white/5 h-1.5 rounded-full mt-4 overflow-hidden">
+                            <div class="bg-gradient-to-r from-amber-500 to-orange-500 h-full rounded-full" style="width: 72%"></div>
+                        </div>
+                    </div>
+                    <div class="glass-panel p-5 rounded-2xl relative overflow-hidden group hover:border-purple-500/30 transition-all duration-300">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-semibold uppercase tracking-wider text-gray-400">Total Analytics Score</span>
+                            <div class="w-8 h-8 rounded-lg bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400">
+                                <i class="fa-solid fa-chart-line"></i>
+                            </div>
+                        </div>
+                        <div class="flex items-baseline gap-2">
+                            <span class="text-3xl font-bold text-white">94.2%</span>
+                            <span class="text-xs text-purple-400 font-medium">Top 1% National</span>
+                        </div>
+                        <div class="w-full bg-white/5 h-1.5 rounded-full mt-4 overflow-hidden">
+                            <div class="bg-gradient-to-r from-purple-500 to-indigo-500 h-full rounded-full" style="width: 94%"></div>
+                        </div>
+                    </div>
+                    <div class="glass-panel p-5 rounded-2xl hover:border-cyan-500/30 transition-all duration-300">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-semibold uppercase tracking-wider text-gray-400">Hours Practiced</span>
+                            <div class="w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400">
+                                <i class="fa-solid fa-clock"></i>
+                            </div>
+                        </div>
+                        <div class="flex items-baseline gap-2">
+                            <span class="text-3xl font-bold text-white">42.5 hrs</span>
+                            <span class="text-xs text-cyan-400 font-medium">This month</span>
+                        </div>
+                        <div class="w-full bg-white/5 h-1.5 rounded-full mt-4 overflow-hidden">
+                            <div class="bg-gradient-to-r from-cyan-500 to-emerald-500 h-full rounded-full" style="width: 65%"></div>
+                        </div>
+                    </div>
+                    <div class="glass-panel p-5 rounded-2xl hover:border-cyan-500/30 transition-all duration-300">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-semibold uppercase tracking-wider text-gray-400">AI Tokens Resolved</span>
+                            <div class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+                                <i class="fa-solid fa-microchip"></i>
+                            </div>
+                        </div>
+                        <div class="flex items-baseline gap-2">
+                            <span class="text-3xl font-bold text-white">142 Doubts</span>
+                            <span class="text-xs text-emerald-400 font-medium">Instant Capture</span>
+                        </div>
+                        <div class="w-full bg-white/5 h-1.5 rounded-full mt-4 overflow-hidden">
+                            <div class="bg-gradient-to-r from-emerald-500 to-teal-500 h-full rounded-full" style="width: 88%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dual Layout Grid Layer -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Left: Campaign Slider & Module Tracking -->
+                    <div class="lg:col-span-2 space-y-8">
+                        <!-- Premium Dynamic Announcement Slider -->
+                        <div class="relative bg-gradient-to-r from-indigo-950 via-slate-900 to-blue-950 border border-cyan-500/20 rounded-3xl p-8 overflow-hidden group shadow-lg">
+                            <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-cyan-500/10 rounded-full filter blur-3xl group-hover:bg-cyan-500/20 transition-all duration-500"></div>
+                            <div class="relative z-10 max-w-md">
+                                <span class="px-3 py-1 bg-cyan-500/20 text-cyan-400 text-xs font-semibold rounded-full border border-cyan-500/30 uppercase tracking-wider">National Talent Scholarship Test</span>
+                                <h3 class="text-3xl font-extrabold text-white mt-4 mb-2 leading-tight">Secure up to 100% Scholarship at AlphaBeta</h3>
+                                <p class="text-gray-400 text-sm mb-6 leading-relaxed">Compete with top applicants nationwide, identify core analytical blindspots, and earn direct high-tier mentorship pathways.</p>
+                                <button onclick="switchTab('courses')" class="px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold rounded-xl transition-all shadow-md shadow-cyan-500/20 flex items-center gap-2">
+                                    Register Free Matrix <i class="fa-solid fa-arrow-right text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Continue Learning Pipeline Tracking Section -->
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-lg font-bold text-white tracking-tight">Active Matrix Tracks</h3>
+                                <a href="#" onclick="switchTab('courses'); return false;" class="text-xs font-semibold text-cyan-400 hover:underline">View Roadmap</a>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="glass-panel p-5 rounded-2xl flex flex-col md:flex-row md:items-center justify-between gap-4 hover:bg-white/[0.04] transition-all">
+                                    <div class="flex items-center gap-4">
+                                        <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 text-xl shrink-0">
+                                            <i class="fa-solid fa-wave-square"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-base font-bold text-white">Electromagnetic Induction & AC Circuits</h4>
+                                            <p class="text-xs text-gray-400 mt-0.5">Advanced JEE Grid • Batch Alpha Core Prime</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center gap-6 justify-between md:justify-end">
+                                        <div class="text-right">
+                                            <p class="text-sm font-semibold text-white">Module 04 / 12</p>
+                                            <p class="text-xs text-gray-500 mt-0.5">Next up: Lenz's Law Mechanics</p>
+                                        </div>
+                                        <button onclick="switchTab('live')" class="w-10 h-10 rounded-xl bg-cyan-500/10 hover:bg-cyan-500 text-cyan-400 hover:text-white border border-cyan-500/20 flex items-center justify-center transition-all">
+                                            <i class="fa-solid fa-play text-sm ml-0.5"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="glass-panel p-5 rounded-2xl flex flex-col md:flex-row md:items-center justify-between gap-4 hover:bg-white/[0.04] transition-all">
+                                    <div class="flex items-center gap-4">
+                                        <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 text-xl shrink-0">
+                                            <i class="fa-solid fa-flask-vial"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-base font-bold text-white">Chemical Kinetics & Catalysis Dynamics</h4>
+                                            <p class="text-xs text-gray-400 mt-0.5">NEET Targeted Core • Inorganic/Physical Split</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center gap-6 justify-between md:justify-end">
+                                        <div class="text-right">
+                                            <p class="text-sm font-semibold text-white">Module 07 / 09</p>
+                                            <p class="text-xs text-gray-500 mt-0.5">Next up: Arrhenius Equation Derivation</p>
+                                        </div>
+                                        <button onclick="switchTab('live')" class="w-10 h-10 rounded-xl bg-cyan-500/10 hover:bg-cyan-500 text-cyan-400 hover:text-white border border-cyan-500/20 flex items-center justify-center transition-all">
+                                            <i class="fa-solid fa-play text-sm ml-0.5"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Panel: Announcements & Interactive Calendar Operations -->
+                    <div class="space-y-6">
+                        <!-- Upcoming Live Exam Tracker Block -->
+                        <div class="glass-panel p-5 rounded-2xl">
+                            <h3 class="text-base font-bold text-white mb-4 tracking-tight flex items-center gap-2">
+                                <i class="fa-solid fa-calendar-check text-cyan-400"></i> Scheduled Milestones
+                            </h3>
+                            <div class="space-y-3">
+                                <div class="p-3.5 bg-white/5 border border-white/5 rounded-xl flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-lg bg-red-500/10 text-red-400 flex flex-col items-center justify-center font-bold text-sm leading-tight shrink-0">
+                                        <span>24</span><span class="text-[9px] uppercase">May</span>
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <p class="text-sm font-semibold text-white truncate">Full Syllabus All-India Test</p>
+                                        <p class="text-xs text-gray-400 truncate">JEE Pattern • 09:00 AM IST</p>
+                                    </div>
+                                </div>
+                                <div class="p-3.5 bg-white/5 border border-white/5 rounded-xl flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-lg bg-cyan-500/10 text-cyan-400 flex flex-col items-center justify-center font-bold text-sm leading-tight shrink-0">
+                                        <span>28</span><span class="text-[9px] uppercase">May</span>
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <p class="text-sm font-semibold text-white truncate">Organic Synthesis Challenge</p>
+                                        <p class="text-xs text-gray-400 truncate">Interactive Live Bracket • 06:30 PM</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Real-time Academy Broadcast Announcements -->
+                        <div class="glass-panel p-5 rounded-2xl">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-base font-bold text-white tracking-tight flex items-center gap-2">
+                                    <i class="fa-solid fa-bullhorn text-purple-400"></i> Academy Updates
+                                </h3>
+                                <span class="w-2 h-2 bg-emerald-400 rounded-full animate-ping"></span>
+                            </div>
+                            <div class="space-y-4 text-xs">
+                                <div class="border-l-2 border-cyan-500 pl-3 py-1">
+                                    <p class="font-semibold text-white">Physical Science Mock Test Schedule Released</p>
+                                    <p class="text-gray-400 mt-1">Class 10 core evaluations structural breakdown is now downloadable in resources panel.</p>
+                                    <span class="text-[10px] text-gray-500 block mt-2">10 mins ago</span>
+                                </div>
+                                <div class="border-l-2 border-purple-500 pl-3 py-1">
+                                    <p class="font-semibold text-white">Fee System Optimization Complete</p>
+                                    <p class="text-gray-400 mt-1">All digital receipts are synced to user profiles. Center processing counters fully integrated.</p>
+                                    <span class="text-[10px] text-gray-500 block mt-2">2 hours ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= VIEW 2: EXPLORE COURSES ================= -->
+            <div id="view-courses" class="space-y-6 view-panel hidden">
+                <!-- Tag Matrix Filter Interface -->
+                <div class="flex flex-wrap items-center gap-2 bg-white/5 p-2 rounded-2xl border border-white/5">
+                    <button onclick="filterCourses('ALL')" class="course-tab-btn px-4 py-2 text-sm font-medium rounded-xl transition-all bg-cyan-500 text-white shadow-neon-cyan">All Tracks</button>
+                    <button onclick="filterCourses('JEE')" class="course-tab-btn px-4 py-2 text-sm font-medium rounded-xl transition-all text-gray-400 hover:text-white">IIT-JEE Premium</button>
+                    <button onclick="filterCourses('NEET')" class="course-tab-btn px-4 py-2 text-sm font-medium rounded-xl transition-all text-gray-400 hover:text-white">NEET Target Matrix</button>
+                    <button onclick="filterCourses('WBJEE')" class="course-tab-btn px-4 py-2 text-sm font-medium rounded-xl transition-all text-gray-400 hover:text-white">WBJEE Suite</button>
+                    <button onclick="filterCourses('CODING')" class="course-tab-btn px-4 py-2 text-sm font-medium rounded-xl transition-all text-gray-400 hover:text-white">AI & Coding</button>
+                </div>
+
+                <!-- Course Cards Reactive Grid -->
+                <div id="course-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Course Card 1 -->
+                    <div class="course-card glass-panel rounded-2xl overflow-hidden group hover:border-cyan-500/40 transition-all duration-300" data-category="JEE">
+                        <div class="h-44 bg-gradient-to-br from-slate-900 to-indigo-950 p-6 flex flex-col justify-between relative overflow-hidden">
+                            <div class="absolute inset-0 bg-[radial-gradient(circle_at_70%_120%,rgba(6,182,212,0.15),transparent_70%)]"></div>
+                            <div class="flex justify-between items-start relative z-10">
+                                <span class="px-2.5 py-1 bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 rounded-lg text-xs font-semibold uppercase tracking-wider">IIT-JEE Advanced</span>
+                                <div class="flex items-center gap-1 bg-black/40 px-2 py-0.5 rounded-md text-brand-gold text-xs">
+                                    <i class="fa-solid fa-star"></i> 4.9
+                                </div>
+                            </div>
+                            <h3 class="text-xl font-bold text-white relative z-10 line-clamp-2">Alpha Core Prime: Physics & Math Matrix</h3>
+                        </div>
+                        <div class="p-5 space-y-4">
+                            <p class="text-sm text-gray-400 line-clamp-2">A high-throughput targeted training system focusing on electromagnetic fields, tensor vectors, and integral mechanics.</p>
+                            <div class="flex items-center justify-between text-xs text-gray-400 border-y border-white/5 py-3">
+                                <span><i class="fa-solid fa-user-group text-cyan-400 mr-1"></i> 14.2k Enrolled</span>
+                                <span><i class="fa-solid fa-clapperboard text-purple-400 mr-1"></i> 180+ Lectures</span>
+                            </div>
+                            <div class="flex items-center justify-between pt-1">
+                                <div>
+                                    <span class="text-2xl font-extrabold text-white">₹3,999</span>
+                                    <span class="text-xs text-gray-500 line-through ml-1">₹12,000</span>
+                                </div>
+                                <button onclick="openPaymentModal('Alpha Core Prime: IIT-JEE')" class="px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold text-sm rounded-xl hover:shadow-neon-cyan transition-all">Enroll Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Course Card 2 -->
+                    <div class="course-card glass-panel rounded-2xl overflow-hidden group hover:border-purple-500/40 transition-all duration-300" data-category="NEET">
+                        <div class="h-44 bg-gradient-to-br from-slate-900 to-purple-950 p-6 flex flex-col justify-between relative overflow-hidden">
+                            <div class="absolute inset-0 bg-[radial-gradient(circle_at_70%_120%,rgba(168,85,247,0.15),transparent_70%)]"></div>
+                            <div class="flex justify-between items-start relative z-10">
+                                <span class="px-2.5 py-1 bg-purple-500/10 border border-purple-500/30 text-purple-400 rounded-lg text-xs font-semibold uppercase tracking-wider">NEET Medical Absolute</span>
+                                <div class="flex items-center gap-1 bg-black/40 px-2 py-0.5 rounded-md text-brand-gold text-xs">
+                                    <i class="fa-solid fa-star"></i> 4.8
+                                </div>
+                            </div>
+                            <h3 class="text-xl font-bold text-white relative z-10 line-clamp-2">Bio-Matrix Core: Genetic Mapping & Kinetics</h3>
+                        </div>
+                        <div class="p-5 space-y-4">
+                            <p class="text-sm text-gray-400 line-clamp-2">Deep dive conceptual exploration structured to match modern medical assessment frameworks with rigorous physical chemistry tracking.</p>
+                            <div class="flex items-center justify-between text-xs text-gray-400 border-y border-white/5 py-3">
+                                <span><i class="fa-solid fa-user-group text-cyan-400 mr-1"></i> 9.8k Enrolled</span>
+                                <span><i class="fa-solid fa-clapperboard text-purple-400 mr-1"></i> 210+ Lectures</span>
+                            </div>
+                            <div class="flex items-center justify-between pt-1">
+                                <div>
+                                    <span class="text-2xl font-extrabold text-white">₹3,499</span>
+                                    <span class="text-xs text-gray-500 line-through ml-1">₹9,999</span>
+                                </div>
+                                <button onclick="openPaymentModal('Bio-Matrix Core: NEET')" class="px-4 py-2 bg-gradient-to-r from-purple-500 to-indigo-600 text-white font-semibold text-sm rounded-xl hover:shadow-neon-purple transition-all">Enroll Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Course Card 3 -->
+                    <div class="course-card glass-panel rounded-2xl overflow-hidden group hover:border-cyan-500/40 transition-all duration-300" data-category="CODING">
+                        <div class="h-44 bg-gradient-to-br from-slate-900 to-slate-950 p-6 flex flex-col justify-between relative overflow-hidden">
+                            <div class="absolute inset-0 bg-[radial-gradient(circle_at_70%_120%,rgba(6,182,212,0.15),transparent_70%)]"></div>
+                            <div class="flex justify-between items-start relative z-10">
+                                <span class="px-2.5 py-1 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 rounded-lg text-xs font-semibold uppercase tracking-wider">AI & Data Engineering</span>
+                                <div class="flex items-center gap-1 bg-black/40 px-2 py-0.5 rounded-md text-brand-gold text-xs">
+                                    <i class="fa-solid fa-star"></i> 5.0
+                                </div>
+                            </div>
+                            <h3 class="text-xl font-bold text-white relative z-10 line-clamp-2">Neural Engineering & Web Automation</h3>
+                        </div>
+                        <div class="p-5 space-y-4">
+                            <p class="text-sm text-gray-400 line-clamp-2">Learn full stack engineering with direct integration arrays targeting embedded hardware control, RFID mechanics, and AI modeling.</p>
+                            <div class="flex items-center justify-between text-xs text-gray-400 border-y border-white/5 py-3">
+                                <span><i class="fa-solid fa-user-group text-cyan-400 mr-1"></i> 5.4k Enrolled</span>
+                                <span><i class="fa-solid fa-clapperboard text-purple-400 mr-1"></i> 140+ Lectures</span>
+                            </div>
+                            <div class="flex items-center justify-between pt-1">
+                                <div>
+                                    <span class="text-2xl font-extrabold text-white">₹4,999</span>
+                                    <span class="text-xs text-gray-500 line-through ml-1">₹15,000</span>
+                                </div>
+                                <button onclick="openPaymentModal('Neural Eng & Automation')" class="px-4 py-2 bg-gradient-to-r from-cyan-500 to-emerald-600 text-white font-semibold text-sm rounded-xl hover:shadow-neon-cyan transition-all">Enroll Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= VIEW 3: LIVE CLASSROOM ================= -->
+            <div id="view-live" class="space-y-6 view-panel hidden">
+                <div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
+                    <!-- Stream Media Monitor Space Layout -->
+                    <div class="xl:col-span-2 space-y-4">
+                        <div class="relative aspect-video bg-black rounded-3xl overflow-hidden border border-white/10 group shadow-2xl">
+                            <!-- Simulated Video Canvas Canvas Placeholder -->
+                            <div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 flex flex-col items-center justify-center p-6 text-center">
+                                <div class="w-16 h-16 rounded-full bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 flex items-center justify-center text-2xl animate-pulse mb-4 shadow-neon-cyan">
+                                    <i class="fa-solid fa-satellite-dish"></i>
+                                </div>
+                                <h4 class="text-lg font-bold text-white">Live Broadcast Streaming Session Connected</h4>
+                                <p class="text-sm text-gray-400 mt-1">Instructor: Prof. Shubhankar Banik • Topic: Alternating Current Vector Matrices</p>
+                            </div>
+
+                            <!-- Screen Floating Indicators Overlay -->
+                            <div class="absolute top-4 left-4 flex items-center gap-2">
+                                <span class="bg-red-600 text-white px-2.5 py-0.5 text-xs font-bold rounded-md uppercase tracking-wider flex items-center gap-1.5 animate-pulse">
+                                    <span class="w-1.5 h-1.5 bg-white rounded-full"></span> Live
+                                </span>
+                                <span class="bg-black/60 backdrop-blur-md text-gray-300 px-2.5 py-0.5 text-xs font-medium rounded-md">
+                                    <i class="fa-solid fa-eye mr-1"></i> <span id="live-viewer-count">4,240</span> streaming
+                                </span>
+                            </div>
+                            
+                            <!-- Video Player Media Controls -->
+                            <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 to-transparent p-4 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <div class="flex items-center gap-4 text-white">
+                                    <button class="hover:text-cyan-400 transition-colors"><i class="fa-solid fa-pause"></i></button>
+                                    <button class="hover:text-cyan-400 transition-colors"><i class="fa-solid fa-volume-high"></i></button>
+                                    <span class="text-xs font-medium text-gray-300">1080p Ultra HD • Sync 0.2s</span>
+                                </div>
+                                <button class="text-white hover:text-cyan-400 transition-colors"><i class="fa-solid fa-expand"></i></button>
+                            </div>
+                        </div>
+
+                        <!-- Macro Interactive Trigger Commands Panel -->
+                        <div class="flex items-center justify-between gap-4 bg-white/5 p-4 rounded-2xl border border-white/5">
+                            <button onclick="toggleRaiseHand()" id="btn-raise-hand" class="flex-1 py-3 px-4 rounded-xl border border-white/10 hover:border-cyan-500/30 bg-white/5 text-sm font-semibold text-white transition-all flex items-center justify-center gap-2 group">
+                                <i class="fa-solid fa-hand transition-transform group-hover:-translate-y-0.5" id="icon-hand"></i> 
+                                <span id="text-raise-hand">Raise Hand to Speak</span>
+                            </button>
+                            <button onclick="triggerApplaud()" class="py-3 px-5 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 text-xl transition-all">👏</button>
+                            <button onclick="triggerApplaud()" class="py-3 px-5 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 text-xl transition-all">🔥</button>
+                        </div>
+
+                        <!-- Live Live Poll Node Widget -->
+                        <div class="glass-panel p-5 rounded-2xl border border-cyan-500/20 relative overflow-hidden" id="poll-container">
+                            <div class="absolute top-0 right-0 px-3 py-1 bg-cyan-500/10 text-cyan-400 text-[10px] font-bold uppercase tracking-widest rounded-bl-xl border-l border-b border-cyan-500/20">Active Interactive Poll</div>
+                            <h4 class="text-base font-bold text-white mb-2">Evaluate the peak value vector of an AC circuit if $I_{rms} = 10\text{ A}$:</h4>
+                            <p class="text-xs text-gray-400 mb-4">Choose the closest pure value transformation matrix below.</p>
+                            <div class="space-y-2.5">
+                                <button onclick="castVote('A')" class="poll-opt-btn w-full p-3 bg-white/5 hover:bg-white/10 text-left text-sm rounded-xl border border-white/5 relative overflow-hidden flex items-center justify-between transition-all group">
+                                    <span class="relative z-10 font-medium text-white group-hover:text-cyan-300">Option A: $14.14\text{ A}$ ($\approx 10\sqrt{2}$)</span>
+                                    <span class="poll-pct text-xs font-semibold text-gray-400 relative z-10 hidden">0%</span>
+                                    <div class="poll-bar absolute inset-y-0 left-0 bg-cyan-500/10 w-0 transition-all duration-500"></div>
+                                </button>
+                                <button onclick="castVote('B')" class="poll-opt-btn w-full p-3 bg-white/5 hover:bg-white/10 text-left text-sm rounded-xl border border-white/5 relative overflow-hidden flex items-center justify-between transition-all group">
+                                    <span class="relative z-10 font-medium text-white group-hover:text-cyan-300">Option B: $7.07\text{ A}$ ($\approx 10/\sqrt{2}$)</span>
+                                    <span class="poll-pct text-xs font-semibold text-gray-400 relative z-10 hidden">0%</span>
+                                    <div class="poll-bar absolute inset-y-0 left-0 bg-cyan-500/10 w-0 transition-all duration-500"></div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Side: Running Multi-User Live Chat Engine Container -->
+                    <div class="glass-panel rounded-3xl h-[620px] flex flex-col justify-between overflow-hidden border border-white/10">
+                        <div class="p-4 border-b border-white/5 bg-white/[0.02] flex items-center justify-between">
+                            <h4 class="text-sm font-bold text-white uppercase tracking-wider">Class Operational Chat</h4>
+                            <span class="px-2 py-0.5 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[10px] font-bold rounded-md">Live Stream Feed</span>
+                        </div>
+
+                        <!-- Messages Stream Box -->
+                        <div id="live-chat-box" class="flex-1 p-4 overflow-y-auto space-y-3.5 text-sm">
+                            <div class="chat-msg">
+                                <p class="text-xs font-semibold text-purple-400">Arijit Bhattacharjee <span class="text-[10px] text-gray-500 ml-1 font-normal">06:10</span></p>
+                                <p class="text-gray-300 mt-0.5">Sir, can we visualize this alternating wave matrix on a 2D grid plane?</p>
+                            </div>
+                            <div class="chat-msg">
+                                <p class="text-xs font-semibold text-cyan-400">Shubhankar Banik (Mentor) <span class="text-[10px] text-gray-500 ml-1 font-normal">06:11</span></p>
+                                <p class="text-gray-200 mt-0.5">Yes Arijit, we will map out the phase vectors instantly on the canvas next.</p>
+                            </div>
+                        </div>
+
+                        <!-- Chat Submission Form -->
+                        <div class="p-4 border-t border-white/5 bg-white/[0.01]">
+                            <form id="chat-form" onsubmit="sendChatMessage(event)" class="flex gap-2">
+                                <input type="text" id="chat-input" placeholder="Contribute to discussion module..." class="flex-1 px-4 py-2.5 text-sm bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-cyan-500/50 text-white">
+                                <button type="submit" class="w-11 h-11 bg-cyan-500 text-white rounded-xl flex items-center justify-center hover:shadow-neon-cyan transition-all"><i class="fa-solid fa-paper-plane text-xs"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= VIEW 4: TEST CENTER ================= -->
+            <div id="view-tests" class="space-y-6 view-panel hidden">
+                <!-- Landing Wrapper Before Initialization -->
+                <div id="test-landing-screen" class="glass-panel p-10 rounded-3xl text-center max-w-2xl mx-auto space-y-6 border border-white/10">
+                    <div class="w-16 h-16 rounded-2xl bg-purple-500/10 text-purple-400 border border-purple-500/20 flex items-center justify-center text-3xl mx-auto">
+                        <i class="fa-solid fa-receipt"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-white">All India Physics Evaluation Matrix</h3>
+                        <p class="text-sm text-gray-400 mt-1">Syllabus Scope: Electrostatics, Gauss Law Mechanics, & Vector Potentials.</p>
+                    </div>
+                    <div class="grid grid-cols-3 gap-4 border-y border-white/5 py-4 text-sm text-left">
+                        <div><p class="text-gray-500 text-xs">Total Duration</p><p class="font-bold text-white mt-0.5">15 Minutes</p></div>
+                        <div><p class="text-gray-500 text-xs">Item Count</p><p class="font-bold text-white mt-0.5">10 Problems</p></div>
+                        <div><p class="text-gray-500 text-xs">Marking Rule</p><p class="font-bold text-emerald-400 mt-0.5">+4 / -1 Matrix</p></div>
+                    </div>
+                    <button onclick="initializeTestEngine()" class="w-full py-3.5 bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-400 hover:to-indigo-500 text-white font-semibold rounded-xl transition-all shadow-md shadow-purple-500/20">
+                        Launch Secure Examination Environment
+                    </button>
+                </div>
+
+                <!-- Active Fullscreen Test Application Layout Engine Workspace -->
+                <div id="test-active-engine" class="grid grid-cols-1 xl:grid-cols-4 gap-8 hidden">
+                    <!-- Left Block: Core Problem Presentation Layout -->
+                    <div class="xl:col-span-3 space-y-6">
+                        <!-- Problem Context Header Header -->
+                        <div class="glass-panel p-4 rounded-xl flex items-center justify-between border-white/5 bg-white/[0.02]">
+                            <span class="text-sm font-bold text-cyan-400" id="txt-question-number">Problem 01 / 10</span>
+                            <div class="flex items-center gap-2 text-red-400 font-mono text-sm bg-red-500/10 px-3 py-1 rounded-lg border border-red-500/20">
+                                <i class="fa-solid fa-clock animate-pulse"></i> <span id="test-timer-clock">15:00</span>
+                            </div>
+                        </div>
+
+                        <!-- Dynamic Central Target Question Renderer Render Area -->
+                        <div class="glass-panel p-8 rounded-2xl min-h-[240px] flex flex-col justify-between" id="question-render-box">
+                            <div class="space-y-6">
+                                <h4 class="text-lg font-bold text-white leading-relaxed" id="question-text">Loading problem configuration state matrix...</h4>
+                                <div class="grid grid-cols-1 gap-3" id="options-box">
+                                    <!-- Populated programmatically -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step Movement Bottom Operations Actions Navigation Bar -->
+                        <div class="flex items-center justify-between gap-4">
+                            <button onclick="navigateTestQuestion(-1)" id="btn-prev-q" class="px-5 py-3 rounded-xl border border-white/10 text-sm font-medium text-white bg-white/5 hover:bg-white/10 disabled:opacity-30 disabled:pointer-events-none transition-all">
+                                <i class="fa-solid fa-arrow-left mr-1.5 text-xs"></i> Back Step
+                            </button>
+                            <button onclick="navigateTestQuestion(1)" id="btn-next-q" class="px-5 py-3 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-white text-sm font-bold transition-all shadow-md shadow-cyan-500/10">
+                                Advance Step <i class="fa-solid fa-arrow-right ml-1.5 text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Right Block: Grid Status Sidebar Panel Selector -->
+                    <div class="glass-panel p-5 rounded-2xl h-fit space-y-6 border border-white/5">
+                        <h4 class="text-sm font-bold text-white uppercase tracking-wider">Index Matrix Layout</h4>
+                        <div class="grid grid-cols-5 gap-2.5" id="test-index-grid">
+                            <!-- Clickable matrix status nodes appended dynamically -->
+                        </div>
+                        <div class="border-t border-white/5 pt-5">
+                            <button onclick="terminateAndCalculateTest()" class="w-full py-3 bg-red-500/10 hover:bg-red-500 border border-red-500/30 text-red-400 hover:text-white font-bold text-sm rounded-xl transition-all uppercase tracking-wide">
+                                Terminate & Run Analysis
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Post-Exam Assessment Evaluation Analytics Visual Dashboard Presentation Screen -->
+                <div id="test-results-screen" class="glass-panel p-8 rounded-3xl text-center max-w-xl mx-auto space-y-6 border border-white/10 hidden">
+                    <div class="w-16 h-16 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex items-center justify-center text-3xl mx-auto">
+                        <i class="fa-solid fa-square-poll-vertical animate-bounce"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-white">System Processing Analysis Complete</h3>
+                        <p class="text-sm text-gray-400 mt-1">Your response profiles have been indexed across national metrics datasets.</p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 bg-white/5 p-4 rounded-xl border border-white/5 text-left">
+                        <div><p class="text-gray-400 text-xs">Gross Score Metric</p><p class="text-2xl font-black text-cyan-400 mt-0.5" id="lbl-score-raw">0 / 40</p></div>
+                        <div><p class="text-gray-400 text-xs">Calculated Accuracy</p><p class="text-2xl font-black text-purple-400 mt-0.5" id="lbl-score-pct">0%</p></div>
+                    </div>
+                    <button onclick="resetTestState()" class="w-full py-3 bg-white/5 hover:bg-white/10 text-sm font-semibold rounded-xl border border-white/10 text-white transition-all">
+                        Reset Application Matrix State
+                    </button>
+                </div>
+            </div>
+
+            <!-- ================= VIEW 5: AI ASSISTANT HUB ================= -->
+            <div id="view-ai" class="space-y-6 view-panel hidden">
+                <div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
+                    <!-- Left Action Matrix Trigger Terminal Shell Setup Block -->
+                    <div class="xl:col-span-2 flex flex-col justify-between glass-panel-purple rounded-3xl h-[600px] border border-purple-500/20 overflow-hidden shadow-2xl">
+                        <div class="p-4 border-b border-purple-500/20 bg-purple-950/20 flex items-center gap-3">
+                            <div class="w-2.5 h-2.5 bg-purple-500 rounded-full animate-ping"></div>
+                            <h4 class="text-sm font-bold text-purple-300 uppercase tracking-wider">Holographic Diagnostic Terminal</h4>
+                        </div>
+
+                        <!-- Core Chat Output Block Console Window -->
+                        <div id="ai-console-stream" class="flex-1 p-6 overflow-y-auto space-y-4 font-mono text-sm leading-relaxed text-purple-200">
+                            <p class="text-purple-400/70 text-xs">// AlphaBeta Holographic Processing Matrix V4.0 initialized.</p>
+                            <p class="text-purple-300"><i class="fa-solid fa-robot mr-1.5"></i> Greeting Operator. Select an active algorithmic prompt sub-matrix below or inject unstructured inquiry parameters directly into the compilation field.</p>
+                        </div>
+
+                        <!-- Bottom Prompt Entry Section -->
+                        <div class="p-4 border-t border-purple-500/20 bg-purple-950/10 space-y-3">
+                            <!-- Action Preset Chip Configurations Arrays Setups -->
+                            <div class="flex flex-wrap gap-2">
+                                <button onclick="injectAIPrompt('QUANTUM')" class="px-3 py-1.5 rounded-lg bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/30 text-xs text-purple-300 font-medium transition-all text-left truncate max-w-xs">⚡ Resolve Quantum Physics Photo Doubt</button>
+                                <button onclick="injectAIPrompt('ROUTINE')" class="px-3 py-1.5 rounded-lg bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/30 text-xs text-purple-300 font-medium transition-all text-left truncate max-w-xs">📅 Draft 7-Day High-Throughput Strategy</button>
+                            </div>
+                            <div class="flex gap-2">
+                                <input type="text" id="ai-user-input" placeholder="Inject inquiry parameters to process..." class="flex-1 px-4 py-2.5 text-sm bg-purple-950/20 border border-purple-500/30 rounded-xl focus:outline-none focus:border-purple-400 text-purple-100 placeholder:text-purple-700 font-mono">
+                                <button onclick="processUnstructuredAIInput()" class="w-11 h-11 bg-purple-600 hover:bg-purple-500 text-white rounded-xl flex items-center justify-center shadow-neon-purple transition-all"><i class="fa-solid fa-wand-magic-sparkles text-xs"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Side Canvas Display Box Holder containing Orb Core Asset Visualization -->
+                    <div class="glass-panel p-6 rounded-3xl flex flex-col items-center justify-center text-center relative overflow-hidden border border-purple-500/10 group h-full min-h-[350px]">
+                        <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(168,85,247,0.1),transparent_70%)]"></div>
+                        <!-- Central Core Floating Neural Network Visual Orb -->
+                        <div class="w-32 h-32 rounded-full bg-gradient-to-tr from-purple-600 via-fuchsia-500 to-cyan-400 flex items-center justify-center opacity-80 shadow-neon-purple group-hover:scale-105 transition-transform duration-500 relative animate-pulse">
+                            <div class="absolute inset-2 bg-[#0a0f1d] rounded-full flex items-center justify-center">
+                                <i class="fa-solid fa-brain text-4xl bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mt-6 tracking-tight">AlphaBeta Neural Synthesizer Core</h3>
+                        <p class="text-xs text-purple-400/80 max-w-xs mt-1 leading-relaxed font-mono">// Cognitive engine mapping queries to multi-modal educational solutions instantly.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
 
-    <h1 style="color:red;">Batches</h1>
-    <p style="color:green;">Your batches will show here.</p>
+    <!-- ================= PREMIUM SYSTEM INTERACTION OVERLAYS / MODALS ================= -->
+    <!-- Checkout Transaction Layer Payment Modal Window -->
+    <div id="payment-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-md flex items-center justify-center p-4 hidden">
+        <div class="glass-panel max-w-md w-full rounded-3xl p-6 relative border border-cyan-500/30 shadow-2xl space-y-6">
+            <div class="flex justify-between items-start">
+                <div>
+                    <h3 class="text-xl font-bold text-white">Secure Application Transaction</h3>
+                    <p class="text-xs text-gray-400 mt-0.5" id="pay-modal-course-title">Course Enrollment Pipeline Matrix</p>
+                </div>
+                <button onclick="closePaymentModal()" class="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-white transition-colors"><i class="fa-solid fa-xmark"></i></button>
+            </div>
 
-    <img src="logo.png">
-    <img src="logo.png">
-    <img src="logo.png">
+            <!-- Segment Split Blocks -->
+            <div class="space-y-3">
+                <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Select Gateway Matrix Interface</p>
+                <button onclick="executeSimulatedPayment()" class="w-full p-4 bg-white/5 hover:bg-white/10 rounded-xl border border-white/10 flex items-center justify-between text-left transition-all group">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-cyan-500/10 text-cyan-400 rounded-lg flex items-center justify-center text-lg"><i class="fa-solid fa-qrcode"></i></div>
+                        <div><p class="text-sm font-semibold text-white group-hover:text-cyan-400">Instant UPI Vector</p><p class="text-xs text-gray-400">Process via PhonePe, GPay, BHIM QR</p></div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-xs text-gray-500"></i>
+                </button>
+                <button onclick="executeSimulatedPayment()" class="w-full p-4 bg-white/5 hover:bg-white/10 rounded-xl border border-white/10 flex items-center justify-between text-left transition-all group">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-purple-500/10 text-purple-400 rounded-lg flex items-center justify-center text-lg"><i class="fa-solid fa-credit-card"></i></div>
+                        <div><p class="text-sm font-semibold text-white group-hover:text-purple-400">Credit / Debit Card Array</p><p class="text-xs text-gray-400">Secure Vault Processing Gateway</p></div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-xs text-gray-500"></i>
+                </button>
+            </div>
 
-  </div>
+            <!-- Transaction Process Status Feedback Mask Overlay Container -->
+            <div id="payment-processing-overlay" class="absolute inset-0 bg-[#0a0f1d]/90 rounded-3xl flex flex-col items-center justify-center p-6 text-center hidden">
+                <div id="pay-loader-icon" class="w-12 h-12 rounded-full border-2 border-cyan-500/20 border-t-cyan-500 animate-spin mb-4"></div>
+                <div id="pay-success-icon" class="w-12 h-12 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center text-2xl mb-4 hidden animate-bounce"><i class="fa-solid fa-circle-check"></i></div>
+                <h4 class="text-lg font-bold text-white" id="pay-status-headline">Authorizing Secure Tokens...</h4>
+                <p class="text-sm text-gray-400 mt-1" id="pay-status-subtext">Do not reload window or interrupt network communication channels.</p>
+            </div>
+        </div>
+    </div>
 
-  <div id="study" class="section">
-    <h2>Study</h2>
-    <p>Study materials here.</p>
-  </div>
 
-  <div id="profile" class="section">
-    <h2>Profile</h2>
-    <p>Your profile details.</p>
-  </div>
+    <!-- ================= ENGINE CONTROLLER CORE GLOBAL ARCHITECTURE STATE MACHINE JAVASCRIPT ================= -->
+    <script>
+        // Global Application Dataset Arrays Definitions Matrices Records
+        const GLOBAL_COURSE_DATASETS = [
+            { id: 1, category: 'JEE', title: 'Alpha Core Prime: Physics & Math Matrix', cost: '₹3,999', rawCost: 3999 },
+            { id: 2, category: 'NEET', title: 'Bio-Matrix Core: Genetic Mapping & Kinetics', cost: '₹3,499', rawCost: 3499 },
+            { id: 3, category: 'CODING', title: 'Neural Engineering & Web Automation', cost: '₹4,999', rawCost: 4999 }
+        ];
 
-  <div id="chat" class="section">
-    <h2>Chat</h2>
-    <p>Chat system coming soon...</p>
-  </div>
+        const TEST_QUESTION_BANK_RECORDS = [
+            {
+                text: "What is the net electric flux passing through a Gaussian surface that encloses a single electric dipole of magnitude $q$?",
+                options: ["$\Phi = q/\varepsilon_0$", "$\Phi = 2q/\varepsilon_0$", "$\Phi = 0$ (Zero Matrix Balance)", "$\Phi = \text{Infinite Divergence}$"],
+                correctIndex: 2
+            },
+            {
+                text: "How does the resistance parameter of an intrinsic semiconductor crystal lattice change when the temperature matrix is increased?",
+                options: ["Increases linearly", "Decreases exponentially", "Remains absolute static constant", "Oscillates uniformly"],
+                correctIndex: 1
+            },
+            {
+                text: "If a wave function possesses an equation trajectory matching $y = A\sin(kx - \omega t)$, what mathematical vector expression models its phase velocity?",
+                options: ["$v = \omega/k$", "$v = k/\omega$", "$v = \omega \cdot k$", "$v = \lambda \cdot k$"],
+                correctIndex: 0
+            }
+        ];
 
-</div>
+        // Central Application Core Runtime Machine State Stores Registry
+        let APP_ACTIVE_VIEW_STATE = 'dashboard';
+        let TEST_CURRENT_QUESTION_INDEX = 0;
+        let TEST_USER_ANSWERS_VECTOR = Array(TEST_QUESTION_BANK_RECORDS.length).fill(null);
+        let TEST_TIMER_INTERVAL_PROCESS = null;
+        let TEST_CLOCK_SECONDS_REMAINING = 900; // 15:00 minutes scale countdown tracker
+        let AI_TOKEN_STREAMING_LOCK = false;
 
-<script>
-function showSection(id) {
-    let sections = document.querySelectorAll(".section");
-    sections.forEach(sec => sec.classList.remove("active"));
+        // View Transition Router Handler
+        function switchTab(targetViewID) {
+            // Unset current flags layout elements indicators configurations
+            document.querySelectorAll('.view-panel').forEach(panel => panel.classList.add('hidden'));
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.className = "nav-btn w-full flex items-center gap-4 px-4 py-3.5 rounded-xl transition-all duration-300 group font-medium text-gray-400 hover:text-white hover:bg-white/5 border border-transparent";
+            });
 
-    document.getElementById(id).classList.add("active");
-}
-</script>
+            // Set active states updates UI elements nodes presentation
+            const targetPanel = document.getElementById(`view-${targetViewID}`);
+            if(targetPanel) targetPanel.classList.remove('hidden');
 
+            const targetBtn = document.getElementById(`btn-${targetViewID}`);
+            if(targetBtn) {
+                if(targetViewID === 'ai') {
+                    targetBtn.className = "nav-btn w-full flex items-center gap-4 px-4 py-3.5 rounded-xl transition-all duration-300 group font-medium text-purple-400 bg-purple-500/10 border border-purple-500/30 shadow-neon-purple";
+                } else {
+                    targetBtn.className = "nav-btn w-full flex items-center gap-4 px-4 py-3.5 rounded-xl transition-all duration-300 group font-medium text-cyan-400 bg-cyan-500/10 border border-cyan-500/30 shadow-neon-cyan";
+                }
+            }
+
+            // Transform dynamic workspace header strings parameters titles labels
+            const headerTitleNode = document.getElementById('view-title');
+            const headerSubtitleNode = document.getElementById('view-subtitle');
+
+            switch(targetViewID) {
+                case 'dashboard':
+                    headerTitleNode.innerText = "System Workspace Dashboard";
+                    headerSubtitleNode.innerText = "Welcome to your high-performance enterprise ecosystem.";
+                    break;
+                case 'courses':
+                    headerTitleNode.innerText = "Explore Premium Tracks";
+                    headerSubtitleNode.innerText = "Access multi-million dollar scalable educational curriculum frameworks.";
+                    break;
+                case 'live':
+                    headerTitleNode.innerText = "Live Synchronous Stream Interface";
+                    headerSubtitleNode.innerText = "Low-latency streaming video player with direct telemetry hooks.";
+                    break;
+                case 'tests':
+                    headerTitleNode.innerText = "Assessment Testing Matrix Core";
+                    headerSubtitleNode.innerText = "Standardized test runtime execution monitoring block environment.";
+                    break;
+                case 'ai':
+                    headerTitleNode.innerText = "AI Synthesizer Core Platform";
+                    headerSubtitleNode.innerText = "Unstructured algorithmic processing network terminal mapping academic answers.";
+                    break;
+            }
+            APP_ACTIVE_VIEW_STATE = targetViewID;
+        }
+
+        // Course Catalog Filter Framework Controller
+        function filterCourses(categoryTag) {
+            // Toggle controller active CSS classes vectors nodes properties
+            document.querySelectorAll('.course-tab-btn').forEach(btn => {
+                btn.className = "course-tab-btn px-4 py-2 text-sm font-medium rounded-xl transition-all text-gray-400 hover:text-white";
+            });
+            event.target.className = "course-tab-btn px-4 py-2 text-sm font-medium rounded-xl transition-all bg-cyan-500 text-white shadow-neon-cyan";
+
+            // Grid nodes filtering execution logs profiles processing
+            document.querySelectorAll('.course-card').forEach(card => {
+                if(categoryTag === 'ALL' || card.getAttribute('data-category') === categoryTag) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        }
+
+        // Payment Processing Overlay Modal Operational Flows Triggers
+        function openPaymentModal(courseTitleString) {
+            document.getElementById('pay-modal-course-title').innerText = courseTitleString;
+            document.getElementById('payment-modal').classList.remove('hidden');
+        }
+        function closePaymentModal() {
+            document.getElementById('payment-modal').classList.add('hidden');
+            // Flush verification overlays states
+            document.getElementById('payment-processing-overlay').classList.add('hidden');
+            document.getElementById('pay-loader-icon').classList.remove('hidden');
+            document.getElementById('pay-success-icon').classList.add('hidden');
+        }
+        function executeSimulatedPayment() {
+            const overlayNode = document.getElementById('payment-processing-overlay');
+            const headlineNode = document.getElementById('pay-status-headline');
+            const subtextNode = document.getElementById('pay-status-subtext');
+            const loaderNode = document.getElementById('pay-loader-icon');
+            const successIconNode = document.getElementById('pay-success-icon');
+
+            overlayNode.classList.remove('hidden');
+            headlineNode.innerText = "Authorizing Secure Tokens...";
+            subtextNode.innerText = "Querying banking distributed registers channels layers...";
+
+            setTimeout(() => {
+                headlineNode.innerText = "Settling Account Ledger balances...";
+                subtextNode.innerText = "Provisioning structural credentials models nodes locks...";
+                
+                setTimeout(() => {
+                    loaderNode.classList.add('hidden');
+                    successIconNode.classList.remove('hidden');
+                    headlineNode.innerText = "Transaction Settled Successfully";
+                    subtextNode.innerText = "Course catalog access matrix granted. Redirecting profile modules parameters...";
+                    
+                    setTimeout(() => {
+                        closePaymentModal();
+                        switchTab('dashboard');
+                    }, 1800);
+                }, 1500);
+            }, 1500);
+        }
+
+        // Live streaming chat and poll mechanisms logic workflows blocks
+        function sendChatMessage(event) {
+            event.preventDefault();
+            const inputField = document.getElementById('chat-input');
+            const chatBox = document.getElementById('live-chat-box');
+            if(!inputField.value.trim()) return;
+
+            const msgDiv = document.createElement('div');
+            msgDiv.className = "chat-msg bg-white/5 p-2 rounded-xl border border-white/5 transition-all";
+            msgDiv.innerHTML = `
+                <p class="text-xs font-semibold text-cyan-400">Debayan Ghosh (You) <span class="text-[10px] text-gray-500 ml-1 font-normal">Just Now</span></p>
+                <p class="text-gray-200 mt-0.5">${inputField.value.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</p>
+            `;
+            chatBox.appendChild(msgDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
+            inputField.value = "";
+        }
+        function toggleRaiseHand() {
+            const btn = document.getElementById('btn-raise-hand');
+            const icon = document.getElementById('icon-hand');
+            const text = document.getElementById('text-raise-hand');
+
+            if(btn.classList.contains('bg-cyan-500')) {
+                btn.className = "flex-1 py-3 px-4 rounded-xl border border-white/10 hover:border-cyan-500/30 bg-white/5 text-sm font-semibold text-white transition-all flex items-center justify-center gap-2 group";
+                text.innerText = "Raise Hand to Speak";
+                icon.className = "fa-solid fa-hand text-white";
+            } else {
+                btn.className = "flex-1 py-3 px-4 rounded-xl border border-cyan-500/30 bg-cyan-500 text-sm font-semibold text-white transition-all flex items-center justify-center gap-2 group shadow-neon-cyan";
+                text.innerText = "Hand Raised! Waiting for Instructor Room Access...";
+                icon.className = "fa-solid fa-hand text-white animate-bounce";
+            }
+        }
+        function triggerApplaud() {
+            const streamCountNode = document.getElementById('live-viewer-count');
+            let currentNum = parseInt(streamCountNode.innerText.replace(/,/g, ''));
+            streamCountNode.innerText = (currentNum + 1).toLocaleString();
+        }
+        function castVote(optionLetter) {
+            const container = document.getElementById('poll-container');
+            const buttons = container.querySelectorAll('.poll-opt-btn');
+            
+            buttons.forEach(btn => {
+                btn.disabled = true;
+                btn.querySelector('.poll-pct').classList.remove('hidden');
+            });
+
+            const randomPctA = Math.floor(Math.random() * 40) + 45; // 45-85 range allocation matrix
+            const randomPctB = 100 - randomPctA;
+
+            buttons[0].querySelector('.poll-pct').innerText = `${randomPctA}%`;
+            buttons[0].querySelector('.poll-bar').style.width = `${randomPctA}%`;
+            buttons[1].querySelector('.poll-pct').innerText = `${randomPctB}%`;
+            buttons[1].querySelector('.poll-bar').style.width = `${randomPctB}%`;
+        }
+
+        // Test center examination environment simulation execution frameworks
+        function initializeTestEngine() {
+            document.getElementById('test-landing-screen').classList.add('hidden');
+            document.getElementById('test-active-engine').classList.remove('hidden');
+            
+            TEST_CURRENT_QUESTION_INDEX = 0;
+            TEST_USER_ANSWERS_VECTOR = Array(TEST_QUESTION_BANK_RECORDS.length).fill(null);
+            TEST_CLOCK_SECONDS_REMAINING = 900;
+            
+            buildTestIndexSidebarGrid();
+            renderQuestionStateToBox();
+            
+            clearInterval(TEST_TIMER_INTERVAL_PROCESS);
+            TEST_TIMER_INTERVAL_PROCESS = setInterval(() => {
+                TEST_CLOCK_SECONDS_REMAINING--;
+                let mins = Math.floor(TEST_CLOCK_SECONDS_REMAINING / 60).toString().padStart(2, '0');
+                let secs = (TEST_CLOCK_SECONDS_REMAINING % 60).toString().padStart(2, '0');
+                document.getElementById('test-timer-clock').innerText = `${mins}:${secs}`;
+                if(TEST_CLOCK_SECONDS_REMAINING <= 0) terminateAndCalculateTest();
+            }, 1000);
+        }
+        function buildTestIndexSidebarGrid() {
+            const gridNode = document.getElementById('test-index-grid');
+            gridNode.innerHTML = "";
+            TEST_QUESTION_BANK_RECORDS.forEach((q, idx) => {
+                const nodeButton = document.createElement('button');
+                nodeButton.id = `test-node-index-${idx}`;
+                nodeButton.onclick = () => { TEST_CURRENT_QUESTION_INDEX = idx; renderQuestionStateToBox(); };
+                nodeButton.className = "w-10 h-10 rounded-xl font-bold text-sm bg-white/5 border border-white/10 text-gray-400 hover:border-cyan-500/30 flex items-center justify-center transition-all";
+                nodeButton.innerText = (idx + 1).toString().padStart(2, '0');
+                gridNode.appendChild(nodeButton);
+            });
+        }
+        function renderQuestionStateToBox() {
+            const currentQ = TEST_QUESTION_BANK_RECORDS[TEST_CURRENT_QUESTION_INDEX];
+            document.getElementById('txt-question-number').innerText = `Problem ${(TEST_CURRENT_QUESTION_INDEX + 1).toString().padStart(2, '0')} / ${TEST_QUESTION_BANK_RECORDS.length.toString().padStart(2, '0')}`;
+            document.getElementById('question-text').innerText = currentQ.text;
+            
+            const optionsBox = document.getElementById('options-box');
+            optionsBox.innerHTML = "";
+            
+            currentQ.options.forEach((optText, oIdx) => {
+                const optionBtn = document.createElement('button');
+                optionBtn.onclick = () => selectTestOption(oIdx);
+                
+                let activeStyles = "bg-white/5 border-white/5 text-gray-300 hover:bg-white/10";
+                if(TEST_USER_ANSWERS_VECTOR[TEST_CURRENT_QUESTION_INDEX] === oIdx) {
+                    activeStyles = "bg-cyan-500/10 border-cyan-500/40 text-cyan-400 shadow-neon-cyan";
+                }
+                
+                optionBtn.className = `w-full p-4 text-left text-sm rounded-xl border transition-all flex items-center gap-3 font-medium ${activeStyles}`;
+                optionBtn.innerHTML = `<span class="w-6 h-6 rounded-lg bg-black/40 flex items-center justify-center text-xs border border-white/10">${String.fromCharCode(65 + oIdx)}</span> <span>${optText}</span>`;
+                optionsBox.appendChild(optionBtn);
+            });
+
+            // Adjust navigation control buttons toggles variables properties disabled properties
+            document.getElementById('btn-prev-q').disabled = (TEST_CURRENT_QUESTION_INDEX === 0);
+            const nextBtnTextNode = document.getElementById('btn-next-q');
+            if(TEST_CURRENT_QUESTION_INDEX === TEST_QUESTION_BANK_RECORDS.length - 1) {
+                nextBtnTextNode.innerHTML = `Finish Sequence <i class="fa-solid fa-flag-checkered ml-1.5 text-xs"></i>`;
+                nextBtnTextNode.onclick = terminateAndCalculateTest;
+            } else {
+                nextBtnTextNode.innerHTML = `Advance Step <i class="fa-solid fa-arrow-right ml-1.5 text-xs"></i>`;
+                nextBtnTextNode.onclick = () => navigateTestQuestion(1);
+            }
+
+            // Highlighting step matrix tracking configuration arrays indices markers
+            TEST_QUESTION_BANK_RECORDS.forEach((_, idx) => {
+                const btnNode = document.getElementById(`test-node-index-${idx}`);
+                if(btnNode) {
+                    if(idx === TEST_CURRENT_QUESTION_INDEX) {
+                        btnNode.className = "w-10 h-10 rounded-xl font-bold text-sm bg-cyan-500 border border-cyan-400 text-white shadow-neon-cyan flex items-center justify-center transition-all";
+                    } else if(TEST_USER_ANSWERS_VECTOR[idx] !== null) {
+                        btnNode.className = "w-10 h-10 rounded-xl font-bold text-sm bg-emerald-500/10 border border-emerald-500/40 text-emerald-400 flex items-center justify-center transition-all";
+                    } else {
+                        btnNode.className = "w-10 h-10 rounded-xl font-bold text-sm bg-white/5 border border-white/10 text-gray-400 flex items-center justify-center transition-all";
+                    }
+                }
+            });
+        }
+        function selectTestOption(optionIndex) {
+            TEST_USER_ANSWERS_VECTOR[TEST_CURRENT_QUESTION_INDEX] = optionIndex;
+            renderQuestionStateToBox();
+        }
+        function navigateTestQuestion(stepDelta) {
+            TEST_CURRENT_QUESTION_INDEX += stepDelta;
+            if(TEST_CURRENT_QUESTION_INDEX < 0) TEST_CURRENT_QUESTION_INDEX = 0;
+            if(TEST_CURRENT_QUESTION_INDEX >= TEST_QUESTION_BANK_RECORDS.length) TEST_CURRENT_QUESTION_INDEX = TEST_QUESTION_BANK_RECORDS.length - 1;
+            renderQuestionStateToBox();
+        }
+        function terminateAndCalculateTest() {
+            clearInterval(TEST_TIMER_INTERVAL_PROCESS);
+            document.getElementById('test-active-engine').classList.add('hidden');
+            
+            let totalMarksCalculated = 0;
+            let correctCount = 0;
+            let totalPossibleMarks = TEST_QUESTION_BANK_RECORDS.length * 4;
+
+            TEST_QUESTION_BANK_RECORDS.forEach((q, idx) => {
+                const userAns = TEST_USER_ANSWERS_VECTOR[idx];
+                if(userAns !== null) {
+                    if(userAns === q.correctIndex) {
+                        totalMarksCalculated += 4;
+                        correctCount++;
+                    } else {
+                        totalMarksCalculated -= 1;
+                    }
+                }
+            });
+
+            let accuracyPercentageValue = Math.max(0, Math.round((correctCount / TEST_QUESTION_BANK_RECORDS.length) * 100));
+
+            document.getElementById('lbl-score-raw').innerText = `${totalMarksCalculated} / ${totalPossibleMarks}`;
+            document.getElementById('lbl-score-pct').innerText = `${accuracyPercentageValue}% Profile Match`;
+            document.getElementById('test-results-screen').classList.remove('hidden');
+        }
+        function resetTestState() {
+            document.getElementById('test-results-screen').classList.add('hidden');
+            document.getElementById('test-landing-screen').classList.remove('hidden');
+        }
+
+        // AI Doubt Processing Network Streaming Logs Simulation Modules Systems Controls
+        function injectAIPrompt(promptArchetypeKey) {
+            let contextTextStr = "";
+            if(promptArchetypeKey === 'QUANTUM') {
+                contextTextStr = "Analyze quantum tunnel state vector anomalies across macroscopic barriers with boundary validation equations.";
+            } else {
+                contextTextStr = "Compile high-performance 7-day academic execution routine optimization models balancing chemical kinetics and advanced integration practice blocks.";
+            }
+            document.getElementById('ai-user-input').value = contextTextStr;
+            processUnstructuredAIInput();
+        }
+        function processUnstructuredAIInput() {
+            const inputField = document.getElementById('ai-user-input');
+            const promptVal = inputField.value.trim();
+            if(!promptVal || AI_TOKEN_STREAMING_LOCK) return;
+
+            AI_TOKEN_STREAMING_LOCK = true;
+            inputField.value = "";
+            
+            const consoleBox = document.getElementById('ai-console-stream');
+            
+            // Append User Question Profile
+            const userP = document.createElement('p');
+            userP.className = "text-white font-semibold border-l-2 border-purple-500 pl-2 mt-4";
+            userP.innerText = `>> USER_QUERY_INJECT: ${promptVal}`;
+            consoleBox.appendChild(userP);
+
+            // Setup Response Node Frame Element
+            const aiP = document.createElement('p');
+            aiP.className = "text-purple-300 mt-2";
+            aiP.innerHTML = `<i class="fa-solid fa-robot mr-1.5 text-purple-400"></i> <span class="ai-stream-content">Compiling neural response matrix indexes...</span>`;
+            consoleBox.appendChild(aiP);
+            consoleBox.scrollTop = consoleBox.scrollHeight;
+
+            const responseTokensArray = [
+                "\n\n[ALGORITHM EXECUTION LOG - SEGMENT RESOLVED]",
+                "\n1. INTERPOLATION MODEL PARAMETERS: Parsing vector space boundary conditions.",
+                "\n2. MATHEMATICAL REDUCTION MATRIX: Applying dynamic integration matrices to resolve variables.",
+                "\n3. CONVECTIVE CRITERIA METRICS: The optimal solution structure converges at coordinate index points with zero variance errors.",
+                "\n\n[RECOMMENDED REMEDIAL DIRECTION SETS]: Practice complementary mock problems in the AlphaBeta Test Core workspace instantly to stabilize knowledge retention coefficients."
+            ];
+
+            let batchIdx = 0;
+            const contentSpanNode = aiP.querySelector('.ai-stream-content');
+            contentSpanNode.innerText = "";
+
+            let streamIntervalTimer = setInterval(() => {
+                if(batchIdx < responseTokensArray.length) {
+                    contentSpanNode.innerText += responseTokensArray[batchIdx];
+                    consoleBox.scrollTop = consoleBox.scrollHeight;
+                    batchIdx++;
+                } else {
+                    clearInterval(streamIntervalTimer);
+                    AI_TOKEN_STREAMING_LOCK = false;
+                }
+            }, 550);
+        }
+
+        // Live Chat Simulation Background Loop Engine Tasks Setup
+        setInterval(() => {
+            if(APP_ACTIVE_VIEW_STATE !== 'live') return;
+            const chatBox = document.getElementById('live-chat-box');
+            if(!chatBox) return;
+
+            const systemMockUserNames = ["Shubhankar Banik", "Arijit Bhattacharjee", "Rohit Sen", "Ananya Paul", "Sayan Mitra"];
+            const systemMockMessages = [
+                "Understood perfectly. The vector transformations clear up the confusion.",
+                "Is the resonance multiplier component absolute or transient across states?",
+                "Can we run a practical verification checklist regarding Lenz's matrix formulas tomorrow?",
+                "Wow, the visual whiteboard renders make complex matrices look completely simple.",
+                "Does negative marking scale down if accuracy index thresholds are sustained?"
+            ];
+
+            const dynamicRandomName = systemMockUserNames[Math.floor(Math.random() * systemMockUserNames.length)];
+            const dynamicRandomMsg = systemMockMessages[Math.floor(Math.random() * systemMockMessages.length)];
+            
+            const msgDiv = document.createElement('div');
+            msgDiv.className = "chat-msg opacity-90";
+            msgDiv.innerHTML = `
+                <p class="text-xs font-semibold text-gray-400">${dynamicRandomName} <span class="text-[10px] text-gray-600 ml-1 font-normal">Auto-Sync</span></p>
+                <p class="text-gray-300 mt-0.5">${dynamicRandomMsg}</p>
+            `;
+            chatBox.appendChild(msgDiv);
+            
+            // Manage clean text nodes queue retention index limits inside streaming containers
+            if(chatBox.children.length > 20) chatBox.removeChild(chatBox.children[0]);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }, 4500);
+    </script>
 </body>
 </html>
